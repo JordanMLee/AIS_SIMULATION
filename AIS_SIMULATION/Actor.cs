@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace AIS_SIMULATION
 {
@@ -15,7 +17,7 @@ namespace AIS_SIMULATION
 
         public void sendBeacon()
         {
-            throw new System.NotImplementedException();
+            Trace.WriteLine("Packet sent...");
         }
 
         public void receiveBeacon()
@@ -25,12 +27,9 @@ namespace AIS_SIMULATION
 
         public double getDistance(double lat1, double lon1, double lat2, double lon2)
         {
-            throw new System.NotImplementedException();
-            
-
             double theta = lon1 - lon2;
             //double theta = _Longitude1 -_Longitude2;
-
+            
             double dist = Math.Sin(deg2rad(lat1)) * Math.Sin(deg2rad(lat2)) + Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) * Math.Cos(deg2rad(theta));
             dist = Math.Acos(dist);
             dist = rad2deg(dist);
