@@ -44,13 +44,25 @@
             this.button3 = new System.Windows.Forms.Button();
             this.PacketTimer = new System.Windows.Forms.Timer(this.components);
             this.LoopTimer = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Lat2Box = new System.Windows.Forms.Label();
+            this.Long2Box = new System.Windows.Forms.Label();
+            this.Lat1Box = new System.Windows.Forms.TextBox();
+            this.Long1Box = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.PB2timer = new System.Windows.Forms.Timer(this.components);
+            this.timerAfterSend = new System.Windows.Forms.Timer(this.components);
+            this.timerAfterSend1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(318, 204);
+            this.startButton.Location = new System.Drawing.Point(318, 236);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(99, 34);
             this.startButton.TabIndex = 0;
@@ -60,7 +72,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(423, 204);
+            this.button2.Location = new System.Drawing.Point(423, 236);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 34);
             this.button2.TabIndex = 1;
@@ -90,24 +102,24 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(291, 72);
+            this.progressBar1.Location = new System.Drawing.Point(318, 72);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(251, 23);
+            this.progressBar1.Size = new System.Drawing.Size(215, 23);
             this.progressBar1.TabIndex = 4;
             // 
             // progressBar2
             // 
-            this.progressBar2.Location = new System.Drawing.Point(291, 130);
+            this.progressBar2.Location = new System.Drawing.Point(318, 128);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.progressBar2.RightToLeftLayout = true;
-            this.progressBar2.Size = new System.Drawing.Size(251, 23);
+            this.progressBar2.Size = new System.Drawing.Size(215, 23);
             this.progressBar2.TabIndex = 5;
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox1.Location = new System.Drawing.Point(37, 204);
+            this.textBox1.Location = new System.Drawing.Point(37, 236);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(235, 137);
@@ -116,7 +128,7 @@
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox2.Location = new System.Drawing.Point(562, 204);
+            this.textBox2.Location = new System.Drawing.Point(562, 236);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(235, 136);
@@ -152,7 +164,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(380, 262);
+            this.button3.Location = new System.Drawing.Point(380, 294);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(77, 46);
             this.button3.TabIndex = 11;
@@ -162,19 +174,116 @@
             // 
             // PacketTimer
             // 
-            this.PacketTimer.Interval = 1000;
+            this.PacketTimer.Interval = 1;
             this.PacketTimer.Tick += new System.EventHandler(this.PacketTimer_Tick);
             // 
             // LoopTimer
             // 
+            this.LoopTimer.Interval = 1000;
             this.LoopTimer.Tick += new System.EventHandler(this.LoopTimer_Tick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(34, 203);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Lat1:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(172, 203);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Long1:";
+            // 
+            // Lat2Box
+            // 
+            this.Lat2Box.AutoSize = true;
+            this.Lat2Box.Location = new System.Drawing.Point(559, 203);
+            this.Lat2Box.Name = "Lat2Box";
+            this.Lat2Box.Size = new System.Drawing.Size(31, 13);
+            this.Lat2Box.TabIndex = 14;
+            this.Lat2Box.Text = "Lat2:";
+            // 
+            // Long2Box
+            // 
+            this.Long2Box.AutoSize = true;
+            this.Long2Box.Location = new System.Drawing.Point(706, 203);
+            this.Long2Box.Name = "Long2Box";
+            this.Long2Box.Size = new System.Drawing.Size(40, 13);
+            this.Long2Box.TabIndex = 15;
+            this.Long2Box.Text = "Long2:";
+            // 
+            // Lat1Box
+            // 
+            this.Lat1Box.Location = new System.Drawing.Point(75, 200);
+            this.Lat1Box.Name = "Lat1Box";
+            this.Lat1Box.Size = new System.Drawing.Size(83, 20);
+            this.Lat1Box.TabIndex = 16;
+            this.Lat1Box.Text = "41.3782";
+            // 
+            // Long1Box
+            // 
+            this.Long1Box.Location = new System.Drawing.Point(213, 200);
+            this.Long1Box.Name = "Long1Box";
+            this.Long1Box.Size = new System.Drawing.Size(59, 20);
+            this.Long1Box.TabIndex = 17;
+            this.Long1Box.Text = "-072.0947";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(600, 200);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 18;
+            this.textBox5.Text = "41.3778";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(747, 200);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(71, 20);
+            this.textBox6.TabIndex = 19;
+            this.textBox6.Text = "-072.0944";
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // PB2timer
+            // 
+            this.PB2timer.Interval = 1;
+            this.PB2timer.Tick += new System.EventHandler(this.PB2timer_Tick);
+            // 
+            // timerAfterSend
+            // 
+            this.timerAfterSend.Interval = 1000;
+            this.timerAfterSend.Tick += new System.EventHandler(this.timerAfterSend_Tick);
+            // 
+            // timerAfterSend1
+            // 
+            this.timerAfterSend1.Interval = 1000;
+            this.timerAfterSend1.Tick += new System.EventHandler(this.timerAfterSend1_Tick);
             // 
             // TwoVesselSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(833, 356);
+            this.ClientSize = new System.Drawing.Size(830, 405);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.Long1Box);
+            this.Controls.Add(this.Lat1Box);
+            this.Controls.Add(this.Long2Box);
+            this.Controls.Add(this.Lat2Box);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
@@ -212,6 +321,18 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Timer PacketTimer;
         private System.Windows.Forms.Timer LoopTimer;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Lat2Box;
+        private System.Windows.Forms.Label Long2Box;
+        public System.Windows.Forms.TextBox Lat1Box;
+        public System.Windows.Forms.TextBox Long1Box;
+        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer PB2timer;
+        private System.Windows.Forms.Timer timerAfterSend;
+        private System.Windows.Forms.Timer timerAfterSend1;
     }
 }
 

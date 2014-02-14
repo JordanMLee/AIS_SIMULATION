@@ -1,17 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace AIS_SIMULATION
 {
     public class Vessel : Actor
     {
-        private int Speed;
+        //vessel name is location in the Actor class
 
-        private int MMSI;
+        public string Pseudonym; //pseudonym of the vessel
 
-        private int Course;
+        public int Speed; //speed of the vessel
+
+        public int MMSI; //MMSI of the vessel
+
+        public int Course; //trackline of the vessel
+
+        public double Latitude; //latitude of the vessel's location
+
+        public double Longitude; //longitude of the vessel's location
+
+        public List<string> beaconList = new List<string>(); //list containing beacons from other vessels
 
         public void getNavigationInfo()
         {
@@ -22,5 +33,7 @@ namespace AIS_SIMULATION
         {
             throw new System.NotImplementedException();
         }
+
+       
     }
 }
