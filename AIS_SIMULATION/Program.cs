@@ -15,7 +15,9 @@ namespace AIS_SIMULATION
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new AIS_box());
             Application.Run(new TwoVesselSimulation());
+            //Application.Run(new AIS_box());
         }
     }
 }

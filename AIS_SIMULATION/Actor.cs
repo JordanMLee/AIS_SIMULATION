@@ -11,10 +11,13 @@ namespace AIS_SIMULATION
     {
         
         public string Name; // name of the node in the network
-        
+        //TwoVesselSimulation sim = new TwoVesselSimulation();
+       
         public void sendBeacon(string transmitName1, int testNum1, string transmitName12, int testNum2)
         {
             Trace.WriteLine("Packet sent...");
+            
+
             
         }
 
