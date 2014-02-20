@@ -96,7 +96,21 @@
             this.label20 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.transDis1 = new System.Windows.Forms.Label();
+            this.transmissionStatus1 = new System.Windows.Forms.Label();
+            this.time1b = new System.Windows.Forms.Label();
+            this.date1 = new System.Windows.Forms.Label();
+            this.time1a = new System.Windows.Forms.Label();
+            this.targets1 = new System.Windows.Forms.Label();
+            this.nameLabel1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.transDis2 = new System.Windows.Forms.Label();
+            this.transmissionStatus2 = new System.Windows.Forms.Label();
+            this.time2b = new System.Windows.Forms.Label();
+            this.time2a = new System.Windows.Forms.Label();
+            this.date2 = new System.Windows.Forms.Label();
+            this.targets2 = new System.Windows.Forms.Label();
+            this.nameLabel2 = new System.Windows.Forms.Label();
             this.button45 = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -133,21 +147,7 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.nameLabel1 = new System.Windows.Forms.Label();
-            this.nameLabel2 = new System.Windows.Forms.Label();
-            this.targets1 = new System.Windows.Forms.Label();
-            this.time1a = new System.Windows.Forms.Label();
-            this.date1 = new System.Windows.Forms.Label();
-            this.time1b = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.targets2 = new System.Windows.Forms.Label();
-            this.date2 = new System.Windows.Forms.Label();
-            this.time2a = new System.Windows.Forms.Label();
-            this.time2b = new System.Windows.Forms.Label();
-            this.transmissionStatus1 = new System.Windows.Forms.Label();
-            this.transmissionStatus2 = new System.Windows.Forms.Label();
-            this.transDis1 = new System.Windows.Forms.Label();
-            this.transDis2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -787,6 +787,82 @@
             this.panel1.Size = new System.Drawing.Size(417, 187);
             this.panel1.TabIndex = 107;
             // 
+            // transDis1
+            // 
+            this.transDis1.AutoSize = true;
+            this.transDis1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transDis1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transDis1.Location = new System.Drawing.Point(149, 22);
+            this.transDis1.Name = "transDis1";
+            this.transDis1.Size = new System.Drawing.Size(85, 16);
+            this.transDis1.TabIndex = 115;
+            this.transDis1.Text = "Tx Disabled";
+            // 
+            // transmissionStatus1
+            // 
+            this.transmissionStatus1.AutoSize = true;
+            this.transmissionStatus1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transmissionStatus1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transmissionStatus1.Location = new System.Drawing.Point(177, 21);
+            this.transmissionStatus1.Name = "transmissionStatus1";
+            this.transmissionStatus1.Size = new System.Drawing.Size(0, 16);
+            this.transmissionStatus1.TabIndex = 114;
+            // 
+            // time1b
+            // 
+            this.time1b.AutoSize = true;
+            this.time1b.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time1b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time1b.Location = new System.Drawing.Point(157, 120);
+            this.time1b.Name = "time1b";
+            this.time1b.Size = new System.Drawing.Size(36, 16);
+            this.time1b.TabIndex = 113;
+            this.time1b.Text = "Time";
+            // 
+            // date1
+            // 
+            this.date1.AutoSize = true;
+            this.date1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.date1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date1.Location = new System.Drawing.Point(20, 120);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(36, 16);
+            this.date1.TabIndex = 112;
+            this.date1.Text = "Date";
+            // 
+            // time1a
+            // 
+            this.time1a.AutoSize = true;
+            this.time1a.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time1a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time1a.Location = new System.Drawing.Point(157, 106);
+            this.time1a.Name = "time1a";
+            this.time1a.Size = new System.Drawing.Size(36, 16);
+            this.time1a.TabIndex = 111;
+            this.time1a.Text = "Time";
+            // 
+            // targets1
+            // 
+            this.targets1.AutoSize = true;
+            this.targets1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.targets1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targets1.Location = new System.Drawing.Point(20, 105);
+            this.targets1.Name = "targets1";
+            this.targets1.Size = new System.Drawing.Size(57, 16);
+            this.targets1.TabIndex = 110;
+            this.targets1.Text = "Targets";
+            // 
+            // nameLabel1
+            // 
+            this.nameLabel1.AutoSize = true;
+            this.nameLabel1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.nameLabel1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel1.Location = new System.Drawing.Point(19, 39);
+            this.nameLabel1.Name = "nameLabel1";
+            this.nameLabel1.Size = new System.Drawing.Size(57, 16);
+            this.nameLabel1.TabIndex = 109;
+            this.nameLabel1.Text = "Unknown";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -837,6 +913,82 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 187);
             this.panel2.TabIndex = 108;
+            // 
+            // transDis2
+            // 
+            this.transDis2.AutoSize = true;
+            this.transDis2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transDis2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transDis2.Location = new System.Drawing.Point(146, 22);
+            this.transDis2.Name = "transDis2";
+            this.transDis2.Size = new System.Drawing.Size(85, 16);
+            this.transDis2.TabIndex = 116;
+            this.transDis2.Text = "Tx Disabled";
+            // 
+            // transmissionStatus2
+            // 
+            this.transmissionStatus2.AutoSize = true;
+            this.transmissionStatus2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transmissionStatus2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transmissionStatus2.Location = new System.Drawing.Point(177, 20);
+            this.transmissionStatus2.Name = "transmissionStatus2";
+            this.transmissionStatus2.Size = new System.Drawing.Size(0, 16);
+            this.transmissionStatus2.TabIndex = 115;
+            // 
+            // time2b
+            // 
+            this.time2b.AutoSize = true;
+            this.time2b.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time2b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time2b.Location = new System.Drawing.Point(158, 118);
+            this.time2b.Name = "time2b";
+            this.time2b.Size = new System.Drawing.Size(36, 16);
+            this.time2b.TabIndex = 114;
+            this.time2b.Text = "Time";
+            // 
+            // time2a
+            // 
+            this.time2a.AutoSize = true;
+            this.time2a.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time2a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time2a.Location = new System.Drawing.Point(158, 104);
+            this.time2a.Name = "time2a";
+            this.time2a.Size = new System.Drawing.Size(36, 16);
+            this.time2a.TabIndex = 114;
+            this.time2a.Text = "Time";
+            // 
+            // date2
+            // 
+            this.date2.AutoSize = true;
+            this.date2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.date2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date2.Location = new System.Drawing.Point(20, 119);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(36, 16);
+            this.date2.TabIndex = 113;
+            this.date2.Text = "Date";
+            // 
+            // targets2
+            // 
+            this.targets2.AutoSize = true;
+            this.targets2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.targets2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targets2.Location = new System.Drawing.Point(20, 103);
+            this.targets2.Name = "targets2";
+            this.targets2.Size = new System.Drawing.Size(57, 16);
+            this.targets2.TabIndex = 111;
+            this.targets2.Text = "Targets";
+            // 
+            // nameLabel2
+            // 
+            this.nameLabel2.AutoSize = true;
+            this.nameLabel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.nameLabel2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel2.Location = new System.Drawing.Point(20, 37);
+            this.nameLabel2.Name = "nameLabel2";
+            this.nameLabel2.Size = new System.Drawing.Size(57, 16);
+            this.nameLabel2.TabIndex = 110;
+            this.nameLabel2.Text = "Unknown";
             // 
             // button45
             // 
@@ -1188,162 +1340,10 @@
             this.label48.TabIndex = 70;
             this.label48.Text = "ALL";
             // 
-            // nameLabel1
-            // 
-            this.nameLabel1.AutoSize = true;
-            this.nameLabel1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.nameLabel1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel1.Location = new System.Drawing.Point(19, 39);
-            this.nameLabel1.Name = "nameLabel1";
-            this.nameLabel1.Size = new System.Drawing.Size(57, 16);
-            this.nameLabel1.TabIndex = 109;
-            this.nameLabel1.Text = "Unknown";
-            // 
-            // nameLabel2
-            // 
-            this.nameLabel2.AutoSize = true;
-            this.nameLabel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.nameLabel2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel2.Location = new System.Drawing.Point(20, 37);
-            this.nameLabel2.Name = "nameLabel2";
-            this.nameLabel2.Size = new System.Drawing.Size(57, 16);
-            this.nameLabel2.TabIndex = 110;
-            this.nameLabel2.Text = "Unknown";
-            // 
-            // targets1
-            // 
-            this.targets1.AutoSize = true;
-            this.targets1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.targets1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.targets1.Location = new System.Drawing.Point(20, 105);
-            this.targets1.Name = "targets1";
-            this.targets1.Size = new System.Drawing.Size(57, 16);
-            this.targets1.TabIndex = 110;
-            this.targets1.Text = "Targets";
-            // 
-            // time1a
-            // 
-            this.time1a.AutoSize = true;
-            this.time1a.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time1a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time1a.Location = new System.Drawing.Point(157, 106);
-            this.time1a.Name = "time1a";
-            this.time1a.Size = new System.Drawing.Size(36, 16);
-            this.time1a.TabIndex = 111;
-            this.time1a.Text = "Time";
-            // 
-            // date1
-            // 
-            this.date1.AutoSize = true;
-            this.date1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.date1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date1.Location = new System.Drawing.Point(20, 120);
-            this.date1.Name = "date1";
-            this.date1.Size = new System.Drawing.Size(36, 16);
-            this.date1.TabIndex = 112;
-            this.date1.Text = "Date";
-            // 
-            // time1b
-            // 
-            this.time1b.AutoSize = true;
-            this.time1b.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time1b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time1b.Location = new System.Drawing.Point(157, 120);
-            this.time1b.Name = "time1b";
-            this.time1b.Size = new System.Drawing.Size(36, 16);
-            this.time1b.TabIndex = 113;
-            this.time1b.Text = "Time";
-            // 
             // timer2
             // 
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // targets2
-            // 
-            this.targets2.AutoSize = true;
-            this.targets2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.targets2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.targets2.Location = new System.Drawing.Point(20, 103);
-            this.targets2.Name = "targets2";
-            this.targets2.Size = new System.Drawing.Size(57, 16);
-            this.targets2.TabIndex = 111;
-            this.targets2.Text = "Targets";
-            // 
-            // date2
-            // 
-            this.date2.AutoSize = true;
-            this.date2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.date2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date2.Location = new System.Drawing.Point(20, 119);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(36, 16);
-            this.date2.TabIndex = 113;
-            this.date2.Text = "Date";
-            // 
-            // time2a
-            // 
-            this.time2a.AutoSize = true;
-            this.time2a.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time2a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time2a.Location = new System.Drawing.Point(158, 104);
-            this.time2a.Name = "time2a";
-            this.time2a.Size = new System.Drawing.Size(36, 16);
-            this.time2a.TabIndex = 114;
-            this.time2a.Text = "Time";
-            // 
-            // time2b
-            // 
-            this.time2b.AutoSize = true;
-            this.time2b.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time2b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time2b.Location = new System.Drawing.Point(158, 118);
-            this.time2b.Name = "time2b";
-            this.time2b.Size = new System.Drawing.Size(36, 16);
-            this.time2b.TabIndex = 114;
-            this.time2b.Text = "Time";
-            // 
-            // transmissionStatus1
-            // 
-            this.transmissionStatus1.AutoSize = true;
-            this.transmissionStatus1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transmissionStatus1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transmissionStatus1.Location = new System.Drawing.Point(177, 21);
-            this.transmissionStatus1.Name = "transmissionStatus1";
-            this.transmissionStatus1.Size = new System.Drawing.Size(0, 16);
-            this.transmissionStatus1.TabIndex = 114;
-            // 
-            // transmissionStatus2
-            // 
-            this.transmissionStatus2.AutoSize = true;
-            this.transmissionStatus2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transmissionStatus2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transmissionStatus2.Location = new System.Drawing.Point(177, 20);
-            this.transmissionStatus2.Name = "transmissionStatus2";
-            this.transmissionStatus2.Size = new System.Drawing.Size(0, 16);
-            this.transmissionStatus2.TabIndex = 115;
-            // 
-            // transDis1
-            // 
-            this.transDis1.AutoSize = true;
-            this.transDis1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transDis1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transDis1.Location = new System.Drawing.Point(149, 22);
-            this.transDis1.Name = "transDis1";
-            this.transDis1.Size = new System.Drawing.Size(85, 16);
-            this.transDis1.TabIndex = 115;
-            this.transDis1.Text = "Tx Disabled";
-            // 
-            // transDis2
-            // 
-            this.transDis2.AutoSize = true;
-            this.transDis2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transDis2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transDis2.Location = new System.Drawing.Point(146, 22);
-            this.transDis2.Name = "transDis2";
-            this.transDis2.Size = new System.Drawing.Size(85, 16);
-            this.transDis2.TabIndex = 116;
-            this.transDis2.Text = "Tx Disabled";
             // 
             // TwoVesselSimulation
             // 
@@ -1375,6 +1375,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.startButton);
+            this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "TwoVesselSimulation";
             this.Text = "TwoVesselSimulation";
             this.Load += new System.EventHandler(this.TwoVesselSimulation_Load);
