@@ -12,7 +12,7 @@ namespace AIS_SIMULATION
 
         public string Pseudonym; //pseudonym of the vessel
 
-        public int Speed; //speed of the vessel
+        public double Speed; //speed of the vessel
 
         public int MMSI; //MMSI of the vessel
 

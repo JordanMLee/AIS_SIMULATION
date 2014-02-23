@@ -51,7 +51,7 @@
             this.Long1Box = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.OtherSendTimer = new System.Windows.Forms.Timer(this.components);
             this.PB2timer = new System.Windows.Forms.Timer(this.components);
             this.timerAfterSend = new System.Windows.Forms.Timer(this.components);
             this.timerAfterSend1 = new System.Windows.Forms.Timer(this.components);
@@ -79,7 +79,7 @@
             this.button17 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.FNCbutton = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -96,6 +96,8 @@
             this.label20 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cseLbl1 = new System.Windows.Forms.Label();
+            this.speedLbl1 = new System.Windows.Forms.Label();
             this.transDis1 = new System.Windows.Forms.Label();
             this.transmissionStatus1 = new System.Windows.Forms.Label();
             this.time1b = new System.Windows.Forms.Label();
@@ -104,6 +106,8 @@
             this.targets1 = new System.Windows.Forms.Label();
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cseLbl2 = new System.Windows.Forms.Label();
+            this.speedLbl2 = new System.Windows.Forms.Label();
             this.transDis2 = new System.Windows.Forms.Label();
             this.transmissionStatus2 = new System.Windows.Forms.Label();
             this.time2b = new System.Windows.Forms.Label();
@@ -127,7 +131,7 @@
             this.button56 = new System.Windows.Forms.Button();
             this.button57 = new System.Windows.Forms.Button();
             this.button58 = new System.Windows.Forms.Button();
-            this.button59 = new System.Windows.Forms.Button();
+            this.FNCbutton2 = new System.Windows.Forms.Button();
             this.button60 = new System.Windows.Forms.Button();
             this.button61 = new System.Windows.Forms.Button();
             this.button62 = new System.Windows.Forms.Button();
@@ -148,6 +152,8 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.FNCstatus = new System.Windows.Forms.Label();
+            this.oneSecDelay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -339,10 +345,10 @@
             this.textBox6.TabIndex = 19;
             this.textBox6.Text = "-072.0944";
             // 
-            // timer1
+            // OtherSendTimer
             // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.OtherSendTimer.Interval = 5500;
+            this.OtherSendTimer.Tick += new System.EventHandler(this.OtherSendTimer_Tick);
             // 
             // PB2timer
             // 
@@ -587,15 +593,16 @@
             this.button15.Text = "MSG";
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // FNCbutton
             // 
-            this.button14.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button14.Location = new System.Drawing.Point(237, 155);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(39, 23);
-            this.button14.TabIndex = 50;
-            this.button14.Text = "FNC";
-            this.button14.UseVisualStyleBackColor = true;
+            this.FNCbutton.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.FNCbutton.Location = new System.Drawing.Point(237, 155);
+            this.FNCbutton.Name = "FNCbutton";
+            this.FNCbutton.Size = new System.Drawing.Size(39, 23);
+            this.FNCbutton.TabIndex = 50;
+            this.FNCbutton.Text = "FNC";
+            this.FNCbutton.UseVisualStyleBackColor = true;
+            this.FNCbutton.Click += new System.EventHandler(this.FNCbutton_Click);
             // 
             // button13
             // 
@@ -695,6 +702,7 @@
             this.button1.TabIndex = 39;
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button22
             // 
@@ -734,11 +742,13 @@
             this.textBox3.Size = new System.Drawing.Size(220, 136);
             this.textBox3.TabIndex = 35;
             this.textBox3.Text = "Ship   Name/MMSI   RG-NM   BRG\r\n                       \r\n           \r\nBARTLETT   " +
-    "  ---.--       ---\'\r\nSEAJET       ---.--       ---\'\r\nV\r\n\r\n\r\n\r\n";
+    "  ---.--       ---°\r\nSEAJET       ---.--       ---°\r\nV\r\n\r\n\r\n\r\n";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.cseLbl1);
+            this.panel1.Controls.Add(this.speedLbl1);
             this.panel1.Controls.Add(this.transDis1);
             this.panel1.Controls.Add(this.transmissionStatus1);
             this.panel1.Controls.Add(this.time1b);
@@ -762,7 +772,7 @@
             this.panel1.Controls.Add(this.button11);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.button13);
-            this.panel1.Controls.Add(this.button14);
+            this.panel1.Controls.Add(this.FNCbutton);
             this.panel1.Controls.Add(this.button15);
             this.panel1.Controls.Add(this.button16);
             this.panel1.Controls.Add(this.button17);
@@ -786,6 +796,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(417, 187);
             this.panel1.TabIndex = 107;
+            // 
+            // cseLbl1
+            // 
+            this.cseLbl1.AutoSize = true;
+            this.cseLbl1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cseLbl1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cseLbl1.Location = new System.Drawing.Point(200, 39);
+            this.cseLbl1.Name = "cseLbl1";
+            this.cseLbl1.Size = new System.Drawing.Size(36, 16);
+            this.cseLbl1.TabIndex = 117;
+            this.cseLbl1.Text = "---°";
+            // 
+            // speedLbl1
+            // 
+            this.speedLbl1.AutoSize = true;
+            this.speedLbl1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.speedLbl1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedLbl1.Location = new System.Drawing.Point(109, 40);
+            this.speedLbl1.Name = "speedLbl1";
+            this.speedLbl1.Size = new System.Drawing.Size(50, 16);
+            this.speedLbl1.TabIndex = 116;
+            this.speedLbl1.Text = "---.--";
             // 
             // transDis1
             // 
@@ -857,7 +889,7 @@
             this.nameLabel1.AutoSize = true;
             this.nameLabel1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.nameLabel1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel1.Location = new System.Drawing.Point(19, 39);
+            this.nameLabel1.Location = new System.Drawing.Point(18, 39);
             this.nameLabel1.Name = "nameLabel1";
             this.nameLabel1.Size = new System.Drawing.Size(57, 16);
             this.nameLabel1.TabIndex = 109;
@@ -866,6 +898,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Controls.Add(this.cseLbl2);
+            this.panel2.Controls.Add(this.speedLbl2);
             this.panel2.Controls.Add(this.transDis2);
             this.panel2.Controls.Add(this.transmissionStatus2);
             this.panel2.Controls.Add(this.time2b);
@@ -889,7 +923,7 @@
             this.panel2.Controls.Add(this.button56);
             this.panel2.Controls.Add(this.button57);
             this.panel2.Controls.Add(this.button58);
-            this.panel2.Controls.Add(this.button59);
+            this.panel2.Controls.Add(this.FNCbutton2);
             this.panel2.Controls.Add(this.button60);
             this.panel2.Controls.Add(this.button61);
             this.panel2.Controls.Add(this.button62);
@@ -913,6 +947,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 187);
             this.panel2.TabIndex = 108;
+            // 
+            // cseLbl2
+            // 
+            this.cseLbl2.AutoSize = true;
+            this.cseLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cseLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cseLbl2.Location = new System.Drawing.Point(199, 37);
+            this.cseLbl2.Name = "cseLbl2";
+            this.cseLbl2.Size = new System.Drawing.Size(36, 16);
+            this.cseLbl2.TabIndex = 118;
+            this.cseLbl2.Text = "---°";
+            // 
+            // speedLbl2
+            // 
+            this.speedLbl2.AutoSize = true;
+            this.speedLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.speedLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedLbl2.Location = new System.Drawing.Point(108, 38);
+            this.speedLbl2.Name = "speedLbl2";
+            this.speedLbl2.Size = new System.Drawing.Size(50, 16);
+            this.speedLbl2.TabIndex = 117;
+            this.speedLbl2.Text = "---.--";
             // 
             // transDis2
             // 
@@ -984,7 +1040,7 @@
             this.nameLabel2.AutoSize = true;
             this.nameLabel2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.nameLabel2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel2.Location = new System.Drawing.Point(20, 37);
+            this.nameLabel2.Location = new System.Drawing.Point(18, 37);
             this.nameLabel2.Name = "nameLabel2";
             this.nameLabel2.Size = new System.Drawing.Size(57, 16);
             this.nameLabel2.TabIndex = 110;
@@ -1009,7 +1065,7 @@
             this.textBox7.Size = new System.Drawing.Size(220, 136);
             this.textBox7.TabIndex = 35;
             this.textBox7.Text = "Ship   Name/MMSI   RG-NM   BRG\r\n                   \r\n\r\nBARTLETT     ---.--       " +
-    "---\'\r\nSEAJET       ---.--       ---\'\r\nV\r\n\r\n\r\n\r\n";
+    "---°\r\nSEAJET       ---.--       ---°\r\nV\r\n\r\n\r\n\r\n";
             // 
             // label35
             // 
@@ -1138,15 +1194,15 @@
             this.button58.Text = "9";
             this.button58.UseVisualStyleBackColor = true;
             // 
-            // button59
+            // FNCbutton2
             // 
-            this.button59.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button59.Location = new System.Drawing.Point(237, 155);
-            this.button59.Name = "button59";
-            this.button59.Size = new System.Drawing.Size(39, 23);
-            this.button59.TabIndex = 50;
-            this.button59.Text = "FNC";
-            this.button59.UseVisualStyleBackColor = true;
+            this.FNCbutton2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.FNCbutton2.Location = new System.Drawing.Point(237, 155);
+            this.FNCbutton2.Name = "FNCbutton2";
+            this.FNCbutton2.Size = new System.Drawing.Size(39, 23);
+            this.FNCbutton2.TabIndex = 50;
+            this.FNCbutton2.Text = "FNC";
+            this.FNCbutton2.UseVisualStyleBackColor = true;
             // 
             // button60
             // 
@@ -1345,12 +1401,29 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // FNCstatus
+            // 
+            this.FNCstatus.AutoSize = true;
+            this.FNCstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.FNCstatus.Location = new System.Drawing.Point(247, 358);
+            this.FNCstatus.Name = "FNCstatus";
+            this.FNCstatus.Size = new System.Drawing.Size(22, 13);
+            this.FNCstatus.TabIndex = 109;
+            this.FNCstatus.Text = "F +";
+            this.FNCstatus.Visible = false;
+            // 
+            // oneSecDelay
+            // 
+            this.oneSecDelay.Interval = 3000;
+            this.oneSecDelay.Tick += new System.EventHandler(this.oneSecDelay_Tick);
+            // 
             // TwoVesselSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(874, 580);
+            this.Controls.Add(this.FNCstatus);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Distance);
@@ -1413,7 +1486,7 @@
         public System.Windows.Forms.TextBox Long1Box;
         public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer OtherSendTimer;
         private System.Windows.Forms.Timer PB2timer;
         private System.Windows.Forms.Timer timerAfterSend;
         private System.Windows.Forms.Timer timerAfterSend1;
@@ -1441,7 +1514,7 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button FNCbutton;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
@@ -1475,7 +1548,7 @@
         private System.Windows.Forms.Button button56;
         private System.Windows.Forms.Button button57;
         private System.Windows.Forms.Button button58;
-        private System.Windows.Forms.Button button59;
+        private System.Windows.Forms.Button FNCbutton2;
         private System.Windows.Forms.Button button60;
         private System.Windows.Forms.Button button61;
         private System.Windows.Forms.Button button62;
@@ -1510,6 +1583,12 @@
         private System.Windows.Forms.Label transmissionStatus2;
         private System.Windows.Forms.Label transDis1;
         private System.Windows.Forms.Label transDis2;
+        private System.Windows.Forms.Label cseLbl1;
+        private System.Windows.Forms.Label speedLbl1;
+        private System.Windows.Forms.Label cseLbl2;
+        private System.Windows.Forms.Label speedLbl2;
+        private System.Windows.Forms.Label FNCstatus;
+        private System.Windows.Forms.Timer oneSecDelay;
     }
 }
 

@@ -18,7 +18,10 @@ namespace AIS_SIMULATION
         CGCutter Cutter1 = new CGCutter(); 
         CGCutter Cutter2 = new CGCutter();
         AIS_box ais_box = new AIS_box();
-        public int targetsNum = 1; 
+        public int targetsNum = 1;
+        public bool FNC_pressed = false;
+        public bool oneSecDelayFlag = false;
+
         public TwoVesselSimulation()
         {
             InitializeComponent();
@@ -32,6 +35,7 @@ namespace AIS_SIMULATION
         
         public void startButton_Click(object sender, EventArgs e)
         {
+            //progressBarAnimation2();
             transmissionStatus1.Show();
             transmissionStatus2.Show();
             transDis1.Hide();
@@ -41,9 +45,13 @@ namespace AIS_SIMULATION
             transmissionStatus1.Text = "Class A";
             transmissionStatus2.Text = "Class A";
             Cutter1.Name = "Bertholf";
+            Cutter1.Pseudonym = "dang3r";
 
             Cutter1.MMSI = 234;
             Cutter1.Latitude = 41.3782;
+            Cutter1.Speed = 12.34;
+            Cutter1.Course = 045;
+
             //
 
             //Cutter1.Latitude = Convert.ToDouble(Lat1Box.Text);
@@ -55,13 +63,16 @@ namespace AIS_SIMULATION
            
 
             Cutter2.Name = "Yeaton";
+            Cutter2.Pseudonym = "iee160";
             Cutter2.MMSI = 456;
             Cutter2.Latitude = 41.3778;
             Cutter2.Longitude = -072.0944;
+            Cutter2.Speed = 20.06;
+            Cutter2.Course = 212;
             //Lat2Box.Text = Cutter2.Latitude.ToString();
             //Long2Box.Text = Cutter2.Longitude.ToString();
-            nameLabel2.Text = Cutter1.Name;
-            nameLabel1.Text = Cutter2.Name;
+            //nameLabel2.Text = Cutter1.Name;
+            //nameLabel1.Text = Cutter2.Name;
 
             
             targets1.Text = targetsNum.ToString() + "-3 of 8 Tgts";
@@ -77,10 +88,7 @@ namespace AIS_SIMULATION
             } 
         }
        
-        public void timer1_Tick(object sender, EventArgs e)
-        {
-            //timerCount++;
-        }
+     
 
         //function to increment the bottom progress bar all the way
         
@@ -153,65 +161,46 @@ namespace AIS_SIMULATION
             transDis1.Show();
             transDis2.Show();
 
+            OtherSendTimer.Stop();
+            timerAfterSend.Stop();
+            PB2timer.Stop();
+
         }
 
         public void packRec()
         {
             textBox2.AppendText("beacon rcvd\r\n");
+            nameLabel2.Text = Cutter1.Pseudonym;
+            nameLabel1.Text = Cutter2.Pseudonym;
+            cseLbl1.Text = Cutter2.Course.ToString()+ "°";
+            speedLbl1.Text = " " + Cutter2.Speed.ToString();
+            cseLbl2.Text = "0" + Cutter1.Course.ToString() + "°";
+            speedLbl2.Text = " " + Cutter1.Speed.ToString();
+            StartRAn();
+        }
+
+        public void packRec2()
+        {
+            textBox1.AppendText("beacon rcvd\r\n");
+            
+            
         }
 
         public void packDen()
         {
             textBox2.AppendText("beacon denied\r\n");
+            //nameLabel2.Text = "unknown";
+            //nameLabel1.Text = "unknown";
+        }
+        public void packDen2()
+        {
+            textBox1.AppendText("beacon denied\r\n");
+            //nameLabel2.Text = "unknown";
+            //nameLabel1.Text = "unknown";
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/********************************************************************************************
+ * */
 
 
 
@@ -243,12 +232,31 @@ namespace AIS_SIMULATION
         public void progressBarAnimation2()
         {
             this.PB2timer.Start();
+            textBox2.AppendText("sending beacon...\r\n");
         }
 
         private void timerAfterSend_Tick(object sender, EventArgs e)
         {
             timerAfterSend.Stop();
             progressBar2.Value = 0;
+            PB2timer.Stop();
+            double dist3 = actor.getDistance(Cutter1.Latitude, Cutter1.Longitude, Cutter2.Latitude, Cutter2.Longitude);
+            if (dist3 < 5)
+            {
+                packRec2();
+                //Distance.Text = dist3.ToString() + " miles";
+                //Cutter1.Latitude++;
+
+            }
+            else
+            {
+                packDen2();
+                //Distance.Text = dist3.ToString() + " miles";
+                //Cutter1.Latitude--;
+
+            }
+
+
         }
 
         private void PB2timer_Tick(object sender, EventArgs e)
@@ -256,7 +264,7 @@ namespace AIS_SIMULATION
             this.progressBar2.Increment(2);
             if (progressBar2.Value == 100)
             {
-                //this.timer2.Stop();
+                
                 timerAfterSend.Start();
             }
         }
@@ -272,5 +280,48 @@ namespace AIS_SIMULATION
             date1.Text = DateTime.Now.Date.ToString("dd-MMM-yyyy");
             date2.Text = DateTime.Now.Date.ToString("dd-MMM-yyyy");
         }
+
+        private void OtherSendTimer_Tick(object sender, EventArgs e)
+        {
+            progressBarAnimation2();
+        }
+        public void StartRAn()
+        {
+            OtherSendTimer.Start();
+        }
+
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FNCstatus.Visible = false;
+            if (FNC_pressed == true)
+            {
+                textBox1.AppendText("sending nav info query...\r\n");
+                pBanimation1Send();
+                oneSecDelay.Start();
+                //if (oneSecDelayFlag == true)
+                //{
+                //    textBox1.AppendText("request for nav info sent\r\n");
+                //    textBox1.AppendText("awaiting response...\r\n");
+                //}
+            }
+        }
+
+        private void FNCbutton_Click(object sender, EventArgs e)
+        {
+            FNC_pressed = true;
+            FNCstatus.Visible = true;
+        }
+
+        private void oneSecDelay_Tick(object sender, EventArgs e)
+        {
+            oneSecDelay.Stop();
+            //oneSecDelayFlag = true;
+            textBox1.AppendText("request for nav info sent\r\n");
+            textBox1.AppendText("awaiting response...\r\n");
+
+        }
+
     }
 }
