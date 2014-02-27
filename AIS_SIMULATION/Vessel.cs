@@ -24,6 +24,8 @@ namespace AIS_SIMULATION
 
         public List<string> beaconList = new List<string>(); //list containing beacons from other vessels
 
+        
+
         public void getNavigationInfo()
         {
             throw new System.NotImplementedException();
