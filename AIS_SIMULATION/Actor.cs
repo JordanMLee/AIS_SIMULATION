@@ -35,6 +35,7 @@ namespace AIS_SIMULATION
             dist = Math.Acos(dist);
             dist = rad2deg(dist);
             dist = dist * 60 * 1.1515 * 0.8684;
+
             return (dist);
             
         }

@@ -36,19 +36,36 @@ namespace AIS_SIMULATION
 {
     public partial class TwoVesselSimulation : Form
     {
+        //each vessel is always sending beacons to other vessels containg its
+        //pseudonym, course, speed and lat/long.
+        //a request can be made for further information such as: nav info
+        //when a request for nav info is made, then the requesting vessel will 
+        //either receive the name of the other vessel or it will be denied.
+
         Stopwatch stopwatch = new Stopwatch();
         Actor actor = new Actor(); //new instance of class Actor, see Actor.cs
         CGCutter Cutter1 = new CGCutter();  //new instance of CGCutter
         CGCutter Cutter2 = new CGCutter();  //new instance of CGCutter
-        
+
+        public static bool knownName1 = false; //flag for accepting nav request from vessel 2
+        public static bool knownName2 = false; //flag for accepting nav request from vessel 1
+
         public int targetsNum = 1; //number of other targets a vessel can see 
                                    //in simulation
         
-        public bool FNC_pressed = false; //flag for FNC button on AIS1(right side)
-        public bool FNC_pressed2 = false;//flag for FNC button on AIS2(right side)
-        public bool oneSecDelayFlag = false;//flag for Delay function
-        public bool button1_click = false;//flag for clicking button1 on AIS1
-        public bool button1_2click = false;//flag for clicking button1 on AIS2
+        public static bool FNC_pressed = false; //flag for FNC button on AIS1(right side)
+        public static bool FNC_pressed2 = false;//flag for FNC button on AIS2(right side)
+        public static bool oneSecDelayFlag = false;//flag for Delay function
+        public static bool button1_click = false;//flag for clicking button1 on AIS1
+        public static bool button1_2click = false;//flag for clicking button1 on AIS2
+
+
+        //for animation of nav info sent from vessel 2 to vessel 1
+        public static bool navSending = false; //flag for changing beacon rcvd to nav info request rcvd on AIS 2
+        public static bool navSending2 = false; //flag for changing beacon rcvd to nav info request rcvd on AIS 1
+
+        public static bool navAckSending = false; //flag for queueing animation for sending nav info on AIS 2
+        public static bool navAckSending2 = false; //flag for queueing animation for sending nav infor on AIS 1
 
         //Constructor
         public TwoVesselSimulation()
@@ -56,9 +73,10 @@ namespace AIS_SIMULATION
        
             InitializeComponent(); 
             timer2.Enabled = true;  //timer for both AIS clocks  
+            //code for fixing size of GUI
             this.Width = 890;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.MaximizeBox = false; //disabled default maximize button
+            this.MinimizeBox = false; //disabled default minimize button
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
         
@@ -85,28 +103,25 @@ namespace AIS_SIMULATION
             Cutter1.Pseudonym = "dang3r";
             Cutter1.MMSI = 234;
 
-            Cutter1.Latitude = 41.3782;
-            Cutter1.Longitude = -072.0947;
-            Cutter1.Speed = 12.34;
-            Cutter1.Course = 045;
+            
+            Cutter1.Latitude = Convert.ToDouble(Lat1Box.Text); 
+            Cutter1.Longitude = Convert.ToDouble(Long1Box.Text);
+            Cutter1.Speed = Convert.ToDouble(SpeedBox1.Text);
+            Cutter1.Course = Convert.ToInt16(Course1Box.Text);
 
-            //Cutter1.Latitude = Convert.ToDouble(Lat1Box.Text);
-            //Lat1Box.Text = Cutter1.Latitude.ToString();
-            //Long1Box.Text = Cutter1.Longitude.ToString();
+           
             
             Cutter2.Name = "Yeaton";
-            Cutter2.Pseudonym = "iee160";
+            Cutter2.Pseudonym = "iee160"; // should be displayed on AIS box 1
             Cutter2.MMSI = 456;
 
-            Cutter2.Latitude = 41.3778;
-            Cutter2.Longitude = -072.0944;
-            Cutter2.Speed = 20.06;
-            Cutter2.Course = 212;
+            
+            Cutter2.Latitude = Convert.ToDouble(textBox5.Text);
+            Cutter2.Longitude = Convert.ToDouble(textBox6.Text);
+            Cutter2.Speed = Convert.ToDouble(SpeedBox2.Text);
+            Cutter2.Course = Convert.ToInt16(CourseBox2.Text);
 
-            //Lat2Box.Text = Cutter2.Latitude.ToString();
-            //Long2Box.Text = Cutter2.Longitude.ToString();
-            //nameLabel2.Text = Cutter1.Name;
-            //nameLabel1.Text = Cutter2.Name;
+          
             //=================================================================
 
             //number targets displayed on AIS boxes
@@ -121,6 +136,7 @@ namespace AIS_SIMULATION
             if (distance < 5)
             {
                 StartSim(sender, e);
+                //StartRAn(); // start animation for second vessel beacon sending
                 
             }//end if 
         }//end start_button
@@ -133,6 +149,7 @@ namespace AIS_SIMULATION
             PacketTimer.Start();
             //Initialize Timer to send Subsequent Packets
             Sendtimer.Start();
+            StartRAn(); // start animation for second vessel beacon sending
         }
 
         //timer for when to send beacons (every 15secs)
@@ -144,7 +161,15 @@ namespace AIS_SIMULATION
         //function to run progessbar animiation once
         public void pBanimation1Send()
         {
-            textBox1.AppendText("sending beacon...\r\n");
+            if (navAckSending2 == false)
+            {
+                textBox1.AppendText("sending beacon...\r\n");
+            }
+            else if (navAckSending2 == true)
+            {
+                textBox1.AppendText("sending nav information...\r\n");
+                navAckSending2 = false;
+            }
             PacketTimer.Start();
         }
 
@@ -172,7 +197,7 @@ namespace AIS_SIMULATION
             //else deny it
             if (dist2 < 5)
             {
-                packRec(); //call packet receive
+                packRec(navSending); //call packet receive
                 Distance.Text = dist2.ToString() + " miles"; //display the dist on GUI
                 //Cutter1.Latitude++;   
             }
@@ -203,24 +228,56 @@ namespace AIS_SIMULATION
             PB2timer.Stop();
 
         }
-
+        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         //receive function for Receiving packets for AIS2
-        public void packRec()
+        public void packRec(bool _navSending)
         {
-            textBox2.AppendText("beacon rcvd\r\n");
-            nameLabel2.Text = Cutter1.Pseudonym;
-            nameLabel1.Text = Cutter2.Pseudonym;
-            cseLbl1.Text = Cutter2.Course.ToString()+ "°";
-            speedLbl1.Text = " " + Cutter2.Speed.ToString();
-            cseLbl2.Text = "0" + Cutter1.Course.ToString() + "°";
+            _navSending = navSending;
+            if (_navSending == false)
+            {
+                textBox2.AppendText("beacon rcvd\r\n");
+            }
+            else if (_navSending == true)
+            {
+                textBox2.AppendText("nav info request rcvd\r\n");
+                navSending = false;
+            }
+            if (knownName2 == false)
+            {
+                nameLabel2.Text = Cutter1.Pseudonym;
+            }
+            else if(knownName2 == true)
+            {
+                nameLabel2.Text = Cutter1.Name;
+            }
+            cseLbl2.Text = Cutter1.Course.ToString() + "°";
             speedLbl2.Text = " " + Cutter1.Speed.ToString();
-            StartRAn();
+            
+            //StartRAn(); // start animation for second vessel beacon sending
         }
 
         //receive function for Receiving packets for AIS1
         public void packRec2()
         {
-            textBox1.AppendText("beacon rcvd\r\n");  
+            if (navSending2 == false)
+            {
+                textBox1.AppendText("beacon rcvd\r\n");
+            }
+            else if (navSending2 == true)
+            {
+                textBox1.AppendText("nav info request rcvd\r\n");
+                navSending2 = false;
+            }
+            if (knownName1 == false)
+            {
+                nameLabel1.Text = Cutter2.Pseudonym;
+            }
+            else if (knownName1 == true)
+            {
+                nameLabel1.Text = Cutter2.Name;
+            }
+            cseLbl1.Text = Cutter2.Course.ToString() + "°";
+            speedLbl1.Text = " " + Cutter2.Speed.ToString();
         }
 
         //deny function for denying packets for AIS2
@@ -267,7 +324,17 @@ namespace AIS_SIMULATION
         public void progressBarAnimation2()
         {
             this.PB2timer.Start();
-            textBox2.AppendText("sending beacon...\r\n");
+            if (navAckSending == false)
+            {
+                textBox2.AppendText("sending beacon...\r\n");
+            }
+            else if (navAckSending == true)
+            {
+                textBox2.AppendText("sending nav information...\r\n");
+                navAckSending = false;
+            }
+
+
         }
 
         //timer for delay after the second progress bar is loaded but before it is cleared
@@ -341,6 +408,7 @@ namespace AIS_SIMULATION
                 FNCstatus.Visible = false;
                 if (FNC_pressed == true)
                 {
+                    navSending = true;
                     textBox1.AppendText("sending nav info query...\r\n");
                     pBanimation1Send();
                     oneSecDelay.Start();
@@ -360,8 +428,10 @@ namespace AIS_SIMULATION
         {
             oneSecDelay.Stop();
             //oneSecDelayFlag = true;
+
             textBox1.AppendText("request for nav info sent\r\n");
             textBox1.AppendText("awaiting response...\r\n");
+            //navAckSending = true;
 
         }
 
@@ -406,7 +476,11 @@ namespace AIS_SIMULATION
             if ( button1_click== true)
             {
                 navACK();
-                nameLabel1.Text = Cutter2.Name;
+                //nameLabel1.Text = Cutter2.Name;
+                knownName1 = true;
+                navAckSending = true;
+                progressBarAnimation2();
+                Delaytimerfornav1.Start();
             }
         }
 
@@ -430,6 +504,7 @@ namespace AIS_SIMULATION
             FNCStatus2.Visible = false;
             if (FNC_pressed2 == true)
             {
+                navSending2 = true;
                 textBox2.AppendText("sending nav info query...\r\n");
                 progressBarAnimation2();
                 oneSecDelay2.Start();
@@ -449,8 +524,13 @@ namespace AIS_SIMULATION
         {
             
                 navACK2();
-                nameLabel2.Text = Cutter1.Name;
-            
+                //nameLabel2.Text = Cutter1.Name;
+                knownName2 = true;
+                navAckSending2 = true;
+
+                
+                pBanimation1Send();
+                Delaytimerfornav2.Start();
         }
 
         //functionality for CAN button on AIS 2
@@ -465,9 +545,65 @@ namespace AIS_SIMULATION
         }
 
         //function to get the vessels locale
-        public void trackline(int course, double speed, DateTime time)
+        public double[] trackline(int course, double speed, double init_lat, double init_long)
         {
+            double R = 3443.9; //radius of the earth in nautical miles
+            double _course = course; //
+            double brng = actor.deg2rad(_course); 
+            double time = Convert.ToDouble(stopwatch.ElapsedMilliseconds);
+            time = time / 1000; //seconds
+            time = time / 60; //minutes
+            time = time / 60; //hours
+            double distnce = speed * time; //in nautical miles
+
+            double lat1 = actor.deg2rad(init_lat);  //Current lat point converted to radians
+            double lon1 = actor.deg2rad(init_long);//Current long point converted to radians
+
+            double lat2 = Math.Asin(Math.Sin(lat1) * Math.Cos(distnce / R) + Math.Cos(lat1) * Math.Sin(distnce / R) * Math.Cos(brng));
+
+            double lon2 = lon1 + Math.Atan2(Math.Sin(brng) * Math.Sin(distnce / R) * Math.Cos(lat1), Math.Cos(distnce / R) - Math.Sin(lat1) * Math.Sin(lat2));
+
+            lat2 = actor.rad2deg(lat2);
+            lon2 = actor.rad2deg(lon2);
+            double[] coord = new double[]{lat2,lon2};
+
+
+            return coord;
+             
+          
             
+        }
+
+        private void Delaytimerfornav1_Tick(object sender, EventArgs e)
+        {
+            Delaytimerfornav1.Stop();
+            //navACK();
+            nameLabel1.Text = Cutter2.Name;
+            navAckSending = false;
+        }
+
+        private void Delaytimerfornav2_Tick(object sender, EventArgs e)
+        {
+            Delaytimerfornav2.Stop();
+            //navACK();
+            nameLabel2.Text = Cutter1.Name;
+            navAckSending2 = false;
+        }
+
+        private void SpeedBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestTimer_Tick(object sender, EventArgs e)
+        {
+            double[] blah = trackline(045,14,41.3782,72.2);
+            testLabel.Text = blah[0].ToString() +"    " + blah[1].ToString();
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            TestTimer.Start();
         }
 
 
