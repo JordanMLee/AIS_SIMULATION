@@ -19,7 +19,8 @@
 // 00/00/00 | 00.00  |  Jordan Lee  | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //          |        |              |
 //==========|========|==============|==========================================
-
+//
+//want to move two labels around a form and add a database with pseudonyms
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -597,8 +598,24 @@ namespace AIS_SIMULATION
 
         private void TestTimer_Tick(object sender, EventArgs e)
         {
-            double[] blah = trackline(045,14,41.3782,72.2);
-            testLabel.Text = blah[0].ToString() +"    " + blah[1].ToString();
+         
+            
+            double[] PosVes1 = trackline(Cutter1.Course, Cutter1.Speed, Cutter1.Latitude,Cutter1.Longitude);
+            
+            double[] PosVes2 = trackline(Cutter2.Course, Cutter2.Speed, Cutter2.Latitude, Cutter2.Longitude);
+            label69.Text = PosVes1[0].ToString();
+            label70.Text = PosVes1[1].ToString();
+            label73.Text = PosVes2[0].ToString();
+            label74.Text = PosVes2[1].ToString();
+            
+            Cutter1.Latitude = PosVes1[0];
+            Cutter1.Longitude = PosVes1[1];
+            Cutter2.Latitude = PosVes2[0];
+            Cutter2.Longitude = PosVes2[1];
+
+
+
+
         }
 
         private void button49_Click(object sender, EventArgs e)
