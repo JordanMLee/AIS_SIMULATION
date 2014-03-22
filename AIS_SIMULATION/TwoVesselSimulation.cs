@@ -702,6 +702,7 @@ namespace AIS_SIMULATION
             date1.Hide();
             time1a.Hide();
             time1b.Hide();
+
             textBox11.Show();
             label77.Show();
             label78.Show();
@@ -783,6 +784,17 @@ namespace AIS_SIMULATION
             label95.Hide();
             label96.Hide();
             label97.Hide();
+
+
+            textBox3.Show();
+            transDis1.Show();
+            nameLabel1.Show();
+            speedLbl1.Show();
+            cseLbl1.Show();
+            targets1.Show();
+            date1.Show();
+            time1a.Show();
+            time1b.Show();
         }
 
 
