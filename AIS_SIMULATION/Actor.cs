@@ -9,9 +9,10 @@ namespace AIS_SIMULATION
 {
     public class Actor
     {
-        
-        public string Name; // name of the node in the network
-        //TwoVesselSimulation sim = new TwoVesselSimulation();
+
+        public string Name; // nxxxxxxxxxxxxxxx: 15-character name, starting with “n”
+
+       
        
         public void sendBeacon(string transmitName1, int testNum1, string transmitName12, int testNum2)
         {

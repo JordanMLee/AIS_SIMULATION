@@ -79,6 +79,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -90,6 +91,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cg_ais.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\container.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tanker_ais.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\300px-BostonCoastGuard.JPG" />
+    <Content Include="Resources\Chinese.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
