@@ -94,6 +94,14 @@
             this.label20 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label105 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.label102 = new System.Windows.Forms.Label();
+            this.label101 = new System.Windows.Forms.Label();
+            this.label100 = new System.Windows.Forms.Label();
+            this.label99 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
             this.label97 = new System.Windows.Forms.Label();
             this.label96 = new System.Windows.Forms.Label();
             this.label95 = new System.Windows.Forms.Label();
@@ -115,7 +123,6 @@
             this.label79 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
             this.label77 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.cseLbl1 = new System.Windows.Forms.Label();
             this.speedLbl1 = new System.Windows.Forms.Label();
             this.transDis1 = new System.Windows.Forms.Label();
@@ -247,7 +254,6 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.label68 = new System.Windows.Forms.Label();
             this.TestTimer = new System.Windows.Forms.Timer(this.components);
-            this.testLabel = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
@@ -261,15 +267,34 @@
             this.vessel1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coastGuardVesselToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.civilianVesselToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pleasureCraftToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.targetVesselToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.civilianVesselToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.nefariousVesselToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shoreSideUnitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pleasureCraftToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SimulationStartDelay = new System.Windows.Forms.Timer(this.components);
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button44 = new System.Windows.Forms.Button();
+            this.WaitAnimation = new System.Windows.Forms.Timer(this.components);
+            this.label106 = new System.Windows.Forms.Label();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.label110 = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
+            this.label112 = new System.Windows.Forms.Label();
+            this.label113 = new System.Windows.Forms.Label();
+            this.label114 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -277,11 +302,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(337, 311);
+            this.startButton.Location = new System.Drawing.Point(304, 311);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(99, 34);
             this.startButton.TabIndex = 0;
@@ -291,7 +317,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(442, 311);
+            this.button2.Location = new System.Drawing.Point(304, 361);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 34);
             this.button2.TabIndex = 1;
@@ -367,7 +393,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(398, 376);
+            this.button3.Location = new System.Drawing.Point(475, 388);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(77, 46);
             this.button3.TabIndex = 11;
@@ -420,9 +446,9 @@
             // 
             this.Lat1Box.Location = new System.Drawing.Point(75, 229);
             this.Lat1Box.Name = "Lat1Box";
-            this.Lat1Box.Size = new System.Drawing.Size(83, 20);
+            this.Lat1Box.Size = new System.Drawing.Size(54, 20);
             this.Lat1Box.TabIndex = 16;
-            this.Lat1Box.Text = "41.3782";
+            this.Lat1Box.Text = "38.0001";
             // 
             // Long1Box
             // 
@@ -430,15 +456,15 @@
             this.Long1Box.Name = "Long1Box";
             this.Long1Box.Size = new System.Drawing.Size(59, 20);
             this.Long1Box.TabIndex = 17;
-            this.Long1Box.Text = "-072.0947";
+            this.Long1Box.Text = "-071.8576";
             // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(645, 229);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(83, 20);
+            this.textBox5.Size = new System.Drawing.Size(53, 20);
             this.textBox5.TabIndex = 18;
-            this.textBox5.Text = "41.3778";
+            this.textBox5.Text = "38.0500";
             // 
             // textBox6
             // 
@@ -446,7 +472,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(71, 20);
             this.textBox6.TabIndex = 19;
-            this.textBox6.Text = "-072.0944";
+            this.textBox6.Text = "-071.8576";
             // 
             // OtherSendTimer
             // 
@@ -476,6 +502,7 @@
             this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 20;
             this.label6.Text = "Distance:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Distance
             // 
@@ -849,12 +876,19 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(220, 136);
             this.textBox3.TabIndex = 35;
-            this.textBox3.Text = "Ship   Name/MMSI   RG-NM   BRG\r\n                       \r\n           \r\nBARTLETT   " +
-    "  ---.--       ---°\r\nSEAJET       ---.--       ---°\r\nV\r\n\r\n\r\n\r\n";
+            this.textBox3.Text = "\r\n                       \r\n           \r\n\r\n\r\n\r\n\r\n";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.label105);
+            this.panel1.Controls.Add(this.label104);
+            this.panel1.Controls.Add(this.label103);
+            this.panel1.Controls.Add(this.label102);
+            this.panel1.Controls.Add(this.label101);
+            this.panel1.Controls.Add(this.label100);
+            this.panel1.Controls.Add(this.label99);
+            this.panel1.Controls.Add(this.label98);
             this.panel1.Controls.Add(this.label97);
             this.panel1.Controls.Add(this.label96);
             this.panel1.Controls.Add(this.label95);
@@ -876,7 +910,6 @@
             this.panel1.Controls.Add(this.label79);
             this.panel1.Controls.Add(this.label78);
             this.panel1.Controls.Add(this.label77);
-            this.panel1.Controls.Add(this.textBox11);
             this.panel1.Controls.Add(this.cseLbl1);
             this.panel1.Controls.Add(this.speedLbl1);
             this.panel1.Controls.Add(this.transDis1);
@@ -926,6 +959,94 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(417, 187);
             this.panel1.TabIndex = 107;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label105.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label105.Location = new System.Drawing.Point(198, 68);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(36, 16);
+            this.label105.TabIndex = 174;
+            this.label105.Text = "---°";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label104.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label104.Location = new System.Drawing.Point(198, 52);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(36, 16);
+            this.label104.TabIndex = 119;
+            this.label104.Text = "---°";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label103.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label103.Location = new System.Drawing.Point(107, 68);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(50, 16);
+            this.label103.TabIndex = 173;
+            this.label103.Text = "---.--";
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label102.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label102.Location = new System.Drawing.Point(108, 53);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(50, 16);
+            this.label102.TabIndex = 172;
+            this.label102.Text = "---.--";
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label101.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label101.Location = new System.Drawing.Point(18, 84);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(15, 16);
+            this.label101.TabIndex = 171;
+            this.label101.Text = "V";
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label100.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label100.Location = new System.Drawing.Point(18, 68);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(50, 16);
+            this.label100.TabIndex = 170;
+            this.label100.Text = "SEAJET";
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label99.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label99.Location = new System.Drawing.Point(18, 52);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(64, 16);
+            this.label99.TabIndex = 169;
+            this.label99.Text = "BARTLETT";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label98.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label98.Location = new System.Drawing.Point(19, 6);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(211, 16);
+            this.label98.TabIndex = 168;
+            this.label98.Text = "Ship  Name/MMSI   RG-NM   BRG";
             // 
             // label97
             // 
@@ -1159,23 +1280,12 @@
             this.label77.TabIndex = 147;
             this.label77.Text = "Vessel   Info  Pg  1  <  >";
             // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.textBox11.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(16, 2);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(220, 136);
-            this.textBox11.TabIndex = 146;
-            this.textBox11.Text = "\r\n\r\n\r\n";
-            // 
             // cseLbl1
             // 
             this.cseLbl1.AutoSize = true;
             this.cseLbl1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.cseLbl1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cseLbl1.Location = new System.Drawing.Point(200, 39);
+            this.cseLbl1.Location = new System.Drawing.Point(198, 39);
             this.cseLbl1.Name = "cseLbl1";
             this.cseLbl1.Size = new System.Drawing.Size(36, 16);
             this.cseLbl1.TabIndex = 117;
@@ -1186,7 +1296,7 @@
             this.speedLbl1.AutoSize = true;
             this.speedLbl1.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.speedLbl1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speedLbl1.Location = new System.Drawing.Point(109, 40);
+            this.speedLbl1.Location = new System.Drawing.Point(108, 40);
             this.speedLbl1.Name = "speedLbl1";
             this.speedLbl1.Size = new System.Drawing.Size(50, 16);
             this.speedLbl1.TabIndex = 116;
@@ -1271,11 +1381,20 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel2.Controls.Add(this.label114);
+            this.panel2.Controls.Add(this.label113);
+            this.panel2.Controls.Add(this.label106);
+            this.panel2.Controls.Add(this.label110);
+            this.panel2.Controls.Add(this.label112);
+            this.panel2.Controls.Add(this.label109);
             this.panel2.Controls.Add(this.cseLbl2);
+            this.panel2.Controls.Add(this.label111);
             this.panel2.Controls.Add(this.speedLbl2);
             this.panel2.Controls.Add(this.transDis2);
             this.panel2.Controls.Add(this.transmissionStatus2);
+            this.panel2.Controls.Add(this.label108);
             this.panel2.Controls.Add(this.time2b);
+            this.panel2.Controls.Add(this.label107);
             this.panel2.Controls.Add(this.time2a);
             this.panel2.Controls.Add(this.date2);
             this.panel2.Controls.Add(this.targets2);
@@ -1326,7 +1445,7 @@
             this.cseLbl2.AutoSize = true;
             this.cseLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.cseLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cseLbl2.Location = new System.Drawing.Point(199, 37);
+            this.cseLbl2.Location = new System.Drawing.Point(198, 37);
             this.cseLbl2.Name = "cseLbl2";
             this.cseLbl2.Size = new System.Drawing.Size(36, 16);
             this.cseLbl2.TabIndex = 118;
@@ -1437,8 +1556,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(220, 136);
             this.textBox7.TabIndex = 35;
-            this.textBox7.Text = "Ship   Name/MMSI   RG-NM   BRG\r\n                   \r\n\r\nBARTLETT     ---.--       " +
-    "---°\r\nSEAJET       ---.--       ---°\r\nV\r\n\r\n\r\n\r\n";
+            this.textBox7.Text = "\r\n                   \r\n\r\n\r\n\r\n";
             // 
             // label35
             // 
@@ -2416,7 +2534,7 @@
             this.Course1Box.Name = "Course1Box";
             this.Course1Box.Size = new System.Drawing.Size(59, 20);
             this.Course1Box.TabIndex = 124;
-            this.Course1Box.Text = "045";
+            this.Course1Box.Text = "145";
             // 
             // label63
             // 
@@ -2477,7 +2595,7 @@
             this.SpeedBox2.Name = "SpeedBox2";
             this.SpeedBox2.Size = new System.Drawing.Size(56, 20);
             this.SpeedBox2.TabIndex = 131;
-            this.SpeedBox2.Text = "20";
+            this.SpeedBox2.Text = "11.00";
             // 
             // textBox15
             // 
@@ -2515,15 +2633,6 @@
             // 
             this.TestTimer.Interval = 1000;
             this.TestTimer.Tick += new System.EventHandler(this.TestTimer_Tick);
-            // 
-            // testLabel
-            // 
-            this.testLabel.AutoSize = true;
-            this.testLabel.Location = new System.Drawing.Point(340, 263);
-            this.testLabel.Name = "testLabel";
-            this.testLabel.Size = new System.Drawing.Size(54, 13);
-            this.testLabel.TabIndex = 136;
-            this.testLabel.Text = "TestLabel";
             // 
             // label69
             // 
@@ -2614,7 +2723,8 @@
             // 
             this.vessel1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.coastGuardVesselToolStripMenuItem,
-            this.civilianVesselToolStripMenuItem});
+            this.civilianVesselToolStripMenuItem,
+            this.pleasureCraftToolStripMenuItem1});
             this.vessel1ToolStripMenuItem.Name = "vessel1ToolStripMenuItem";
             this.vessel1ToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.vessel1ToolStripMenuItem.Text = "Vessel 1";
@@ -2630,15 +2740,23 @@
             // 
             this.civilianVesselToolStripMenuItem.Name = "civilianVesselToolStripMenuItem";
             this.civilianVesselToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
-            this.civilianVesselToolStripMenuItem.Text = "Civilian Vessel";
+            this.civilianVesselToolStripMenuItem.Text = "Commercial Vessel";
             this.civilianVesselToolStripMenuItem.Click += new System.EventHandler(this.civilianVesselToolStripMenuItem_Click);
+            // 
+            // pleasureCraftToolStripMenuItem1
+            // 
+            this.pleasureCraftToolStripMenuItem1.Name = "pleasureCraftToolStripMenuItem1";
+            this.pleasureCraftToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.pleasureCraftToolStripMenuItem1.Text = "Pleasure Craft";
+            this.pleasureCraftToolStripMenuItem1.Click += new System.EventHandler(this.pleasureCraftToolStripMenuItem1_Click);
             // 
             // targetVesselToolStripMenuItem
             // 
             this.targetVesselToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.civilianVesselToolStripMenuItem1,
             this.nefariousVesselToolStripMenuItem,
-            this.shoreSideUnitToolStripMenuItem});
+            this.shoreSideUnitToolStripMenuItem,
+            this.pleasureCraftToolStripMenuItem});
             this.targetVesselToolStripMenuItem.Name = "targetVesselToolStripMenuItem";
             this.targetVesselToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.targetVesselToolStripMenuItem.Text = "Target Vessel";
@@ -2646,23 +2764,30 @@
             // civilianVesselToolStripMenuItem1
             // 
             this.civilianVesselToolStripMenuItem1.Name = "civilianVesselToolStripMenuItem1";
-            this.civilianVesselToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
-            this.civilianVesselToolStripMenuItem1.Text = "Civilian Vessel";
+            this.civilianVesselToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
+            this.civilianVesselToolStripMenuItem1.Text = "Commercial Vessel";
             this.civilianVesselToolStripMenuItem1.Click += new System.EventHandler(this.civilianVesselToolStripMenuItem1_Click);
             // 
             // nefariousVesselToolStripMenuItem
             // 
             this.nefariousVesselToolStripMenuItem.Name = "nefariousVesselToolStripMenuItem";
-            this.nefariousVesselToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.nefariousVesselToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.nefariousVesselToolStripMenuItem.Text = "Nefarious Vessel";
             this.nefariousVesselToolStripMenuItem.Click += new System.EventHandler(this.nefariousVesselToolStripMenuItem_Click);
             // 
             // shoreSideUnitToolStripMenuItem
             // 
             this.shoreSideUnitToolStripMenuItem.Name = "shoreSideUnitToolStripMenuItem";
-            this.shoreSideUnitToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.shoreSideUnitToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.shoreSideUnitToolStripMenuItem.Text = "Shore Side Unit";
             this.shoreSideUnitToolStripMenuItem.Click += new System.EventHandler(this.shoreSideUnitToolStripMenuItem_Click);
+            // 
+            // pleasureCraftToolStripMenuItem
+            // 
+            this.pleasureCraftToolStripMenuItem.Name = "pleasureCraftToolStripMenuItem";
+            this.pleasureCraftToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.pleasureCraftToolStripMenuItem.Text = "Pleasure Craft";
+            this.pleasureCraftToolStripMenuItem.Click += new System.EventHandler(this.pleasureCraftToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -2708,12 +2833,188 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // SimulationStartDelay
+            // 
+            this.SimulationStartDelay.Interval = 1;
+            this.SimulationStartDelay.Tick += new System.EventHandler(this.SimulationStartDelay_Tick);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(5, 1);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(123, 17);
+            this.radioButton1.TabIndex = 146;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Fail to send Nav Info";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(5, 18);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(86, 17);
+            this.radioButton2.TabIndex = 147;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Alter AIS info";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(5, 34);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(139, 17);
+            this.radioButton3.TabIndex = 148;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Broadcast unsigned info";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(5, 51);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(149, 17);
+            this.radioButton4.TabIndex = 149;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Try to spoof CG Certificate";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.radioButton2);
+            this.panel4.Controls.Add(this.radioButton4);
+            this.panel4.Controls.Add(this.radioButton3);
+            this.panel4.Controls.Add(this.radioButton1);
+            this.panel4.Location = new System.Drawing.Point(429, 311);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(158, 71);
+            this.panel4.TabIndex = 151;
+            // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(304, 411);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(100, 34);
+            this.button44.TabIndex = 152;
+            this.button44.Text = "RESET";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
+            // WaitAnimation
+            // 
+            this.WaitAnimation.Interval = 2000;
+            this.WaitAnimation.Tick += new System.EventHandler(this.WaitAnimation_Tick);
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label106.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label106.Location = new System.Drawing.Point(20, 6);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(211, 16);
+            this.label106.TabIndex = 175;
+            this.label106.Text = "Ship  Name/MMSI   RG-NM   BRG";
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label107.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label107.Location = new System.Drawing.Point(18, 53);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(64, 16);
+            this.label107.TabIndex = 170;
+            this.label107.Text = "BARTLETT";
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label108.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label108.Location = new System.Drawing.Point(20, 70);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(50, 16);
+            this.label108.TabIndex = 175;
+            this.label108.Text = "SEAJET";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label109.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label109.Location = new System.Drawing.Point(108, 54);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(50, 16);
+            this.label109.TabIndex = 175;
+            this.label109.Text = "---.--";
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label110.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label110.Location = new System.Drawing.Point(108, 70);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(50, 16);
+            this.label110.TabIndex = 176;
+            this.label110.Text = "---.--";
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label111.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label111.Location = new System.Drawing.Point(198, 50);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(36, 16);
+            this.label111.TabIndex = 175;
+            this.label111.Text = "---°";
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label112.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label112.Location = new System.Drawing.Point(198, 66);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(36, 16);
+            this.label112.TabIndex = 177;
+            this.label112.Text = "---°";
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label113.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label113.Location = new System.Drawing.Point(20, 87);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(15, 16);
+            this.label113.TabIndex = 175;
+            this.label113.Text = "V";
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label114.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label114.Location = new System.Drawing.Point(34, 6);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(183, 16);
+            this.label114.TabIndex = 178;
+            this.label114.Text = "Vessel  Info  Pg  3  <  >";
+            // 
             // TwoVesselSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1480, 648);
+            this.Controls.Add(this.button44);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.label76);
             this.Controls.Add(this.label75);
             this.Controls.Add(this.label74);
@@ -2722,7 +3023,6 @@
             this.Controls.Add(this.label71);
             this.Controls.Add(this.label70);
             this.Controls.Add(this.label69);
-            this.Controls.Add(this.testLabel);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.label67);
             this.Controls.Add(this.textBox16);
@@ -2791,6 +3091,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2996,7 +3298,6 @@
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.Timer TestTimer;
-        private System.Windows.Forms.Label testLabel;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.Label label71;
@@ -3016,7 +3317,6 @@
         private System.Windows.Forms.ToolStripMenuItem civilianVesselToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem nefariousVesselToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem shoreSideUnitToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.Label label77;
@@ -3038,6 +3338,33 @@
         private System.Windows.Forms.Label label82;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.ToolStripMenuItem pleasureCraftToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pleasureCraftToolStripMenuItem;
+        private System.Windows.Forms.Timer SimulationStartDelay;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.Button button44;
+        private System.Windows.Forms.Timer WaitAnimation;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.Label label114;
     }
 }
 

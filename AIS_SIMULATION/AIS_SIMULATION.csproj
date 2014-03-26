@@ -102,6 +102,7 @@
     <None Include="Resources\tanker_ais.PNG" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pleasureCraft.PNG" />
     <None Include="Resources\300px-BostonCoastGuard.JPG" />
     <Content Include="Resources\Chinese.PNG" />
   </ItemGroup>
