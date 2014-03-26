@@ -16,6 +16,14 @@ namespace AIS_SIMULATION
 
         public int MMSI; //MMSI of the vessel
 
+        public int IMO;
+
+        public string CSgn;
+
+        public string Dest;
+
+        public string ETA;
+
         public int Course; //XXX: course in degrees true
 
         public double Latitude; //XX.XXXXi: latitude in decimal degrees (4 decimals)
@@ -38,6 +46,8 @@ namespace AIS_SIMULATION
         //vcCG: is a coast guard vessel
 
         public string operatingMission; //omXXX: operating mission in 3-number identifier, proceeded by “om”
+
+        
 
         public void getNavigationInfo()
         {

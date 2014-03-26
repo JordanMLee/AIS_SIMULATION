@@ -74,6 +74,9 @@ namespace AIS_SIMULATION
         public static bool fvAckSending = false;
         public static bool fvAckSending2 = false;
 
+        public bool navBtn1 = false;
+        public bool navBtn2 = false;
+
         //Constructor
         public TwoVesselSimulation()
         {
@@ -86,6 +89,7 @@ namespace AIS_SIMULATION
             this.MinimizeBox = false; //disabled default minimize button
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             //textBox11.Hide();
+            //AIS1 page1
             label77.Hide();
             label78.Hide();
             label79.Hide();
@@ -112,6 +116,73 @@ namespace AIS_SIMULATION
             button3.Enabled = false;
             button2.Enabled = false;
             button44.Enabled = false;
+            
+            //AIS2 page2
+            label114.Hide();
+            label115.Hide();
+            label116.Hide();
+            label117.Hide();
+            label118.Hide();
+            label119.Hide();
+            label120.Hide();
+            label121.Hide();
+            label122.Hide();
+            label123.Hide();
+            label124.Hide();
+            label126.Hide();
+            label127.Hide();
+            label128.Hide();
+            label129.Hide();
+            label130.Hide();
+            label131.Hide();
+            label132.Hide();
+            label133.Hide();
+
+            //AIS1 page2
+            label125.Hide();
+            label134.Hide();
+            label135.Hide();
+            label136.Hide();
+            label137.Hide();
+            label138.Hide();
+            label139.Hide();
+            label140.Hide();
+            label141.Hide();
+            label142.Hide();
+            label143.Hide();
+            label144.Hide();
+            label145.Hide();
+            label146.Hide();
+            label147.Hide();
+            label148.Hide();
+            label149.Hide();
+            label150.Hide();
+            label151.Hide();
+
+            //AIS2 page 1
+            label152.Hide();
+            label153.Hide();
+            label154.Hide();
+            label155.Hide();
+            label156.Hide();
+            label157.Hide();
+            label158.Hide();
+            label159.Hide();
+            label160.Hide();
+            label161.Hide();
+            label162.Hide();
+            label163.Hide();
+            label164.Hide();
+            label165.Hide();
+            label166.Hide();
+            label167.Hide();
+            label168.Hide();
+            label169.Hide();
+            label170.Hide();
+            label171.Hide();
+            label172.Hide();
+
+
             
         }
         
@@ -209,7 +280,7 @@ namespace AIS_SIMULATION
         //function to run progessbar animiation once
         public void pBanimation1Send()
         {
-            if (navAckSending2 && fvAckSending2 == false)
+            if (navAckSending2 == false && fvAckSending2 == false)
             {
                 textBox1.AppendText("sending beacon...\r\n");
             }
@@ -807,8 +878,11 @@ namespace AIS_SIMULATION
 
         }
 
+        
+        //AIS 1 nav button pressed
         private void button23_Click(object sender, EventArgs e)
         {
+            navBtn1 = true;
             label98.Hide();
             label99.Hide();
             label100.Hide();
@@ -889,6 +963,7 @@ namespace AIS_SIMULATION
 
         private void button22_Click(object sender, EventArgs e)
         {
+            navBtn1 = false;
             label98.Show();
             label99.Show();
             label100.Show();
@@ -898,6 +973,7 @@ namespace AIS_SIMULATION
             label104.Show();
             label105.Show();
             //textBox11.Hide();
+            //AIS1page1
             label77.Hide();
             label78.Hide();
             label79.Hide();
@@ -919,6 +995,26 @@ namespace AIS_SIMULATION
             label95.Hide();
             label96.Hide();
             label97.Hide();
+            //AIS1 page2
+            label125.Hide();
+            label134.Hide();
+            label135.Hide();
+            label136.Hide();
+            label137.Hide();
+            label138.Hide();
+            label139.Hide();
+            label140.Hide();
+            label141.Hide();
+            label142.Hide();
+            label143.Hide();
+            label144.Hide();
+            label145.Hide();
+            label146.Hide();
+            label147.Hide();
+            label148.Hide();
+            label149.Hide();
+            label150.Hide();
+            label151.Hide();
 
 
             textBox3.Show();
@@ -972,6 +1068,349 @@ namespace AIS_SIMULATION
             pBanimation1Send();
             fvAckSending2 = true;
             
+        }
+
+        private void label121_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //ais2 rightbutton
+        private void button64_Click(object sender, EventArgs e)
+        {
+            if (navBtn2 == true)
+            {
+                //ais2 page2
+                label114.Show();
+                label115.Show();
+                label116.Show();
+                label117.Show();
+                label118.Show();
+                label119.Show();
+                label120.Show();
+                label121.Show();
+                label122.Show();
+                label123.Show();
+                label124.Show();
+                label126.Show();
+                label127.Show();
+                label128.Show();
+                label129.Show();
+                label130.Show();
+                label131.Show();
+                label132.Show();
+                label133.Show();
+                //AIS2 page 1
+                label152.Hide();
+                label153.Hide();
+                label154.Hide();
+                label155.Hide();
+                label156.Hide();
+                label157.Hide();
+                label158.Hide();
+                label159.Hide();
+                label160.Hide();
+                label161.Hide();
+                label162.Hide();
+                label163.Hide();
+                label164.Hide();
+                label165.Hide();
+                label166.Hide();
+                label167.Hide();
+                label168.Hide();
+                label169.Hide();
+                label170.Hide();
+                label171.Hide();
+                label172.Hide();
+            }
+
+
+        }
+
+        private void label130_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void transDis1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (navBtn1 == true)
+            {
+                //AIS1 page 1
+                label77.Hide();
+                label78.Hide();
+                label79.Hide();
+                label80.Hide();
+                label81.Hide();
+                label82.Hide();
+                label83.Hide();
+                label84.Hide();
+                label85.Hide();
+                label86.Hide();
+                label87.Hide();
+                label88.Hide();
+                label89.Hide();
+                label90.Hide();
+                label91.Hide();
+                label92.Hide();
+                label93.Hide();
+                label94.Hide();
+                label95.Hide();
+                label96.Hide();
+                label97.Hide();
+
+                //AIS1 page 2
+                label134.Show();
+                label135.Show();
+                label136.Show();
+                label137.Show();
+                label138.Show();
+                label139.Show();
+                label140.Show();
+                label141.Show();
+                label142.Show();
+                label143.Show();
+                label144.Show();
+                label145.Show();
+                label146.Show();
+                label147.Show();
+                label148.Show();
+                label149.Show();
+                label150.Show();
+                label151.Show();
+
+            }
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (navBtn1 == true)
+            {
+                //AIS1 page 1
+                label77.Show();
+                label78.Show();
+                label79.Show();
+                label80.Show();
+                label81.Show();
+                label82.Show();
+                label83.Show();
+                label84.Show();
+                label85.Show();
+                label86.Show();
+                label87.Show();
+                label88.Show();
+                label89.Show();
+                label90.Show();
+                label91.Show();
+                label92.Show();
+                label93.Show();
+                label94.Show();
+                label95.Show();
+                label96.Show();
+                label97.Show();
+
+                //AIS1 page 2
+                label134.Hide();
+                label135.Hide();
+                label136.Hide();
+                label137.Hide();
+                label138.Hide();
+                label139.Hide();
+                label140.Hide();
+                label141.Hide();
+                label142.Hide();
+                label143.Hide();
+                label144.Hide();
+                label145.Hide();
+                label146.Hide();
+                label147.Hide();
+                label148.Hide();
+                label149.Hide();
+                label150.Hide();
+                label151.Hide();
+            }
+        }
+
+        //AIS2 navbutton
+        private void button46_Click(object sender, EventArgs e)
+        {
+            navBtn2 = true;
+            //AIS2 page 1
+            label152.Show();
+            label153.Show();
+            label154.Show();
+            label155.Show();
+            label156.Show();
+            label157.Show();
+            label158.Show();
+            label159.Show();
+            label160.Show();
+            label161.Show();
+            label162.Show();
+            label163.Show();
+            label164.Show();
+            label165.Show();
+            label166.Show();
+            label167.Show();
+            label168.Show();
+            label169.Show();
+            label170.Show();
+            label171.Show();
+            label172.Show();
+            
+            //AIS2 dpage
+            transmissionStatus2.Hide();
+            label106.Hide();
+            transDis2.Hide();
+            nameLabel2.Hide();
+            label107.Hide();
+            speedLbl2.Hide();
+            cseLbl2.Hide();
+            label108.Hide();
+            label109.Hide();
+            label110.Hide();
+            label111.Hide();
+            label112.Hide();
+            label113.Hide();
+            targets2.Hide();
+            date2.Hide();
+            time2a.Hide();
+            time2b.Hide();
+
+
+
+
+        }
+
+        //AIS2 escbutton
+        private void button47_Click(object sender, EventArgs e)
+        {
+            navBtn2 = false;
+
+            //AIS2 dpage
+            transmissionStatus2.Show();
+            label106.Show();
+            
+            nameLabel2.Show();
+            label107.Show();
+            speedLbl2.Show();
+            cseLbl2.Show();
+            label108.Show();
+            label109.Show();
+            label110.Show();
+            label111.Show();
+            label112.Show();
+            label113.Show();
+            targets2.Show();
+            date2.Show();
+            time2a.Show();
+            time2b.Show();
+
+            //AIS2 page 1
+            label152.Hide();
+            label153.Hide();
+            label154.Hide();
+            label155.Hide();
+            label156.Hide();
+            label157.Hide();
+            label158.Hide();
+            label159.Hide();
+            label160.Hide();
+            label161.Hide();
+            label162.Hide();
+            label163.Hide();
+            label164.Hide();
+            label165.Hide();
+            label166.Hide();
+            label167.Hide();
+            label168.Hide();
+            label169.Hide();
+            label170.Hide();
+            label171.Hide();
+            label172.Hide();
+
+            //AIS2 page2
+            label114.Hide();
+            label115.Hide();
+            label116.Hide();
+            label117.Hide();
+            label118.Hide();
+            label119.Hide();
+            label120.Hide();
+            label121.Hide();
+            label122.Hide();
+            label123.Hide();
+            label124.Hide();
+            label126.Hide();
+            label127.Hide();
+            label128.Hide();
+            label129.Hide();
+            label130.Hide();
+            label131.Hide();
+            label132.Hide();
+            label133.Hide();
+
+
+
+
+
+        }
+
+
+        private void button45_Click(object sender, EventArgs e)
+        {
+            if (navBtn2 == true)
+            {
+
+                //ais2 page2
+                label114.Hide();
+                label115.Hide();
+                label116.Hide();
+                label117.Hide();
+                label118.Hide();
+                label119.Hide();
+                label120.Hide();
+                label121.Hide();
+                label122.Hide();
+                label123.Hide();
+                label124.Hide();
+                label126.Hide();
+                label127.Hide();
+                label128.Hide();
+                label129.Hide();
+                label130.Hide();
+                label131.Hide();
+                label132.Hide();
+                label133.Hide();
+                //AIS2 page 1
+                label152.Show();
+                label153.Show();
+                label154.Show();
+                label155.Show();
+                label156.Show();
+                label157.Show();
+                label158.Show();
+                label159.Show();
+                label160.Show();
+                label161.Show();
+                label162.Show();
+                label163.Show();
+                label164.Show();
+                label165.Show();
+                label166.Show();
+                label167.Show();
+                label168.Show();
+                label169.Show();
+                label170.Show();
+                label171.Show();
+                label172.Show();
+            }
         }
 
 
