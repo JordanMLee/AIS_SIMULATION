@@ -402,10 +402,34 @@ namespace AIS_SIMULATION
             
             cseLbl2.Text = Cutter1.Course.ToString() + "°";
             speedLbl2.Text = " " + Cutter1.Speed.ToString();
-            if (fvAckSending2 == true)
-            {
+           
                 //insert code for adding values to textboxes in new part of scren
-            }
+
+                if (Convert.ToDouble(label69.Text) >= 0)
+                {
+                    label162.Text = "N " + label69.Text;
+                }
+                else if (Convert.ToDouble(label69.Text) < 0)
+                {
+                    label162.Text = "S " + label69.Text;
+                }
+                if (Convert.ToDouble(label70.Text) >= 0)
+                {
+                    label159.Text = "E " + label70.Text;
+                }
+                else if (Convert.ToDouble(label70.Text) < 0)
+                {
+                    label159.Text = "W " + (Convert.ToDouble(label70.Text) * (-1)).ToString();
+                }
+
+
+                label163.Text = Cutter1.MMSI.ToString();
+                //label165.Text = Cutter1.Name;
+                label157.Text = Cutter1.Course.ToString() + "°";
+                label155.Text = Cutter1.Speed.ToString() + " Kn";
+
+
+            
            
 
            
@@ -543,6 +567,16 @@ namespace AIS_SIMULATION
                 navAckSending = false;
             }
 
+            if (fvSending2 == true)
+            {
+
+             
+
+
+
+
+
+            }
 
         }
 
@@ -734,6 +768,10 @@ namespace AIS_SIMULATION
             
             textBox2.AppendText("request for nav info sent\r\n");
             textBox2.AppendText("awaiting response...\r\n");
+
+            //if(fvSending2 ==true)
+            //{
+
         }
         //functionality for MSG button on AIS 1
         private void button15_Click(object sender, EventArgs e)
@@ -842,6 +880,7 @@ namespace AIS_SIMULATION
             if (FNC_pressed2 == true)
             {
                 fvSending2 = true;
+                FNCStatus2.Hide();
                 textBox2.AppendText("sending full vessel info query...\r\n");
                 progressBarAnimation2();
                 oneSecDelay2.Start();
@@ -1411,6 +1450,11 @@ namespace AIS_SIMULATION
                 label171.Show();
                 label172.Show();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -886,6 +886,7 @@
             this.button4.TabIndex = 40;
             this.button4.Text = "2";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
@@ -3012,7 +3013,7 @@
             this.label114.AutoSize = true;
             this.label114.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label114.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label114.Location = new System.Drawing.Point(658, 829);
+            this.label114.Location = new System.Drawing.Point(653, 829);
             this.label114.Name = "label114";
             this.label114.Size = new System.Drawing.Size(190, 16);
             this.label114.TabIndex = 178;
@@ -3023,7 +3024,7 @@
             this.label115.AutoSize = true;
             this.label115.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label115.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label115.Location = new System.Drawing.Point(641, 844);
+            this.label115.Location = new System.Drawing.Point(636, 844);
             this.label115.Name = "label115";
             this.label115.Size = new System.Drawing.Size(50, 16);
             this.label115.TabIndex = 179;
@@ -3034,7 +3035,7 @@
             this.label116.AutoSize = true;
             this.label116.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label116.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label116.Location = new System.Drawing.Point(686, 844);
+            this.label116.Location = new System.Drawing.Point(681, 844);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(43, 16);
             this.label116.TabIndex = 180;
@@ -3045,7 +3046,7 @@
             this.label117.AutoSize = true;
             this.label117.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label117.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label117.Location = new System.Drawing.Point(642, 861);
+            this.label117.Location = new System.Drawing.Point(637, 861);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(64, 16);
             this.label117.TabIndex = 181;
@@ -3056,7 +3057,7 @@
             this.label118.AutoSize = true;
             this.label118.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label118.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label118.Location = new System.Drawing.Point(736, 861);
+            this.label118.Location = new System.Drawing.Point(731, 861);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(71, 16);
             this.label118.TabIndex = 182;
@@ -3067,7 +3068,7 @@
             this.label119.AutoSize = true;
             this.label119.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label119.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label119.Location = new System.Drawing.Point(641, 893);
+            this.label119.Location = new System.Drawing.Point(636, 893);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(99, 16);
             this.label119.TabIndex = 183;
@@ -3078,7 +3079,7 @@
             this.label120.AutoSize = true;
             this.label120.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label120.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label120.Location = new System.Drawing.Point(641, 877);
+            this.label120.Location = new System.Drawing.Point(636, 877);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(134, 16);
             this.label120.TabIndex = 184;
@@ -3089,7 +3090,7 @@
             this.label121.AutoSize = true;
             this.label121.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label121.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label121.Location = new System.Drawing.Point(641, 909);
+            this.label121.Location = new System.Drawing.Point(636, 909);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(141, 16);
             this.label121.TabIndex = 185;
@@ -3101,7 +3102,7 @@
             this.label122.AutoSize = true;
             this.label122.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label122.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label122.Location = new System.Drawing.Point(642, 925);
+            this.label122.Location = new System.Drawing.Point(637, 925);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(50, 16);
             this.label122.TabIndex = 186;
@@ -3112,7 +3113,7 @@
             this.label123.AutoSize = true;
             this.label123.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label123.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label123.Location = new System.Drawing.Point(642, 941);
+            this.label123.Location = new System.Drawing.Point(637, 941);
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(50, 16);
             this.label123.TabIndex = 187;
@@ -3123,7 +3124,7 @@
             this.label124.AutoSize = true;
             this.label124.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label124.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label124.Location = new System.Drawing.Point(762, 941);
+            this.label124.Location = new System.Drawing.Point(757, 941);
             this.label124.Name = "label124";
             this.label124.Size = new System.Drawing.Size(43, 16);
             this.label124.TabIndex = 188;
@@ -3134,7 +3135,7 @@
             this.label126.AutoSize = true;
             this.label126.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label126.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label126.Location = new System.Drawing.Point(709, 861);
+            this.label126.Location = new System.Drawing.Point(704, 861);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(29, 16);
             this.label126.TabIndex = 190;
@@ -3145,7 +3146,7 @@
             this.label127.AutoSize = true;
             this.label127.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label127.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label127.Location = new System.Drawing.Point(776, 877);
+            this.label127.Location = new System.Drawing.Point(771, 877);
             this.label127.Name = "label127";
             this.label127.Size = new System.Drawing.Size(29, 16);
             this.label127.TabIndex = 191;
@@ -3156,7 +3157,7 @@
             this.label128.AutoSize = true;
             this.label128.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label128.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label128.Location = new System.Drawing.Point(778, 909);
+            this.label128.Location = new System.Drawing.Point(773, 909);
             this.label128.Name = "label128";
             this.label128.Size = new System.Drawing.Size(29, 16);
             this.label128.TabIndex = 192;
@@ -3167,7 +3168,7 @@
             this.label129.AutoSize = true;
             this.label129.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label129.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label129.Location = new System.Drawing.Point(731, 893);
+            this.label129.Location = new System.Drawing.Point(726, 893);
             this.label129.Name = "label129";
             this.label129.Size = new System.Drawing.Size(29, 16);
             this.label129.TabIndex = 193;
@@ -3178,7 +3179,7 @@
             this.label130.AutoSize = true;
             this.label130.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label130.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label130.Location = new System.Drawing.Point(799, 861);
+            this.label130.Location = new System.Drawing.Point(794, 861);
             this.label130.Name = "label130";
             this.label130.Size = new System.Drawing.Size(29, 16);
             this.label130.TabIndex = 194;
@@ -3190,7 +3191,7 @@
             this.label131.AutoSize = true;
             this.label131.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label131.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label131.Location = new System.Drawing.Point(686, 925);
+            this.label131.Location = new System.Drawing.Point(681, 925);
             this.label131.Name = "label131";
             this.label131.Size = new System.Drawing.Size(29, 16);
             this.label131.TabIndex = 195;
@@ -3201,7 +3202,7 @@
             this.label132.AutoSize = true;
             this.label132.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label132.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label132.Location = new System.Drawing.Point(686, 941);
+            this.label132.Location = new System.Drawing.Point(681, 941);
             this.label132.Name = "label132";
             this.label132.Size = new System.Drawing.Size(29, 16);
             this.label132.TabIndex = 196;
@@ -3212,7 +3213,7 @@
             this.label133.AutoSize = true;
             this.label133.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.label133.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label133.Location = new System.Drawing.Point(805, 941);
+            this.label133.Location = new System.Drawing.Point(800, 941);
             this.label133.Name = "label133";
             this.label133.Size = new System.Drawing.Size(29, 16);
             this.label133.TabIndex = 197;
