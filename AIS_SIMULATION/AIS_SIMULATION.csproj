@@ -55,6 +55,11 @@
     </Compile>
     <Compile Include="CGCutter.cs" />
     <Compile Include="GenericVessel.cs" />
+    <Compile Include="PseudonymsDB1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PseudonymsDB1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ShoreSideUnit.cs" />
     <Compile Include="TwoVesselSimulation.cs">
       <SubType>Form</SubType>
@@ -81,6 +86,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -93,6 +99,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="PseudonymsDB1DataSet.xsc">
+      <DependentUpon>PseudonymsDB1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PseudonymsDB1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PseudonymsDB1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PseudonymsDB1DataSet.xss">
+      <DependentUpon>PseudonymsDB1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\cg_ais.PNG" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +121,9 @@
   <ItemGroup>
     <None Include="Resources\pleasureCraft.PNG" />
     <None Include="Resources\300px-BostonCoastGuard.JPG" />
+    <Content Include="PseudonymsDB1.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Chinese.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

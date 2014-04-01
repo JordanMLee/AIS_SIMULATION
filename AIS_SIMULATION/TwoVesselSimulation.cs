@@ -43,7 +43,7 @@ namespace AIS_SIMULATION
         //when a request for nav info is made, then the requesting vessel will 
         //either receive the name of the other vessel or it will be denied.
 
-        Stopwatch stopwatch = new Stopwatch();
+        Stopwatch stopwatch = new Stopwatch(); //stopwatch for GUI, seen on GUI at startup, keeps running time
         Actor actor = new Actor(); //new instance of class Actor, see Actor.cs
         CGCutter Cutter1 = new CGCutter();  //new instance of CGCutter
         CGCutter Cutter2 = new CGCutter();  //new instance of CGCutter
@@ -71,16 +71,15 @@ namespace AIS_SIMULATION
         public static bool fvSending = false; //flag for changing beacon rvcd to FV vessel info rvcd on AIS2
         public static bool fvSending2 = false;//flag for changing beacon rvcd to FV vessel infor rcvd on AIS1
 
-        public static bool fvAckSending = false;
-        public static bool fvAckSending2 = false;
+        public static bool fvAckSending = false; //flag for queueing animation for sending FV info on AIS2
+        public static bool fvAckSending2 = false; //flag for queueing animation for sending FV info on AIS1
 
-        public bool navBtn1 = false;
-        public bool navBtn2 = false;
+        public bool navBtn1 = false; //flag to check if NAV button has been pressed on AIS1
+        public bool navBtn2 = false; //flag to check if NAV button has been pressed on AIS2
 
         //Constructor
         public TwoVesselSimulation()
         {
-       
             InitializeComponent(); 
             timer2.Enabled = true;  //timer for both AIS clocks  
             //code for fixing size of GUI
@@ -88,7 +87,7 @@ namespace AIS_SIMULATION
             this.MaximizeBox = false; //disabled default maximize button
             this.MinimizeBox = false; //disabled default minimize button
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            //textBox11.Hide();
+            
             //AIS1 page1
             label77.Hide();
             label78.Hide();
@@ -111,11 +110,11 @@ namespace AIS_SIMULATION
             label95.Hide();
             label96.Hide();
             label97.Hide();
-            panel4.Enabled = false;
+            //panel4.Enabled = false;
 
-            button3.Enabled = false;
-            button2.Enabled = false;
-            button44.Enabled = false;
+            button3.Enabled = false; //3-vessel button
+            button2.Enabled = false; //stop button
+            button44.Enabled = false; //reset button
             
             //AIS2 page2
             label114.Hide();
@@ -137,27 +136,6 @@ namespace AIS_SIMULATION
             label131.Hide();
             label132.Hide();
             label133.Hide();
-
-            //AIS1 page2
-            label125.Hide();
-            label134.Hide();
-            label135.Hide();
-            label136.Hide();
-            label137.Hide();
-            label138.Hide();
-            label139.Hide();
-            label140.Hide();
-            label141.Hide();
-            label142.Hide();
-            label143.Hide();
-            label144.Hide();
-            label145.Hide();
-            label146.Hide();
-            label147.Hide();
-            label148.Hide();
-            label149.Hide();
-            label150.Hide();
-            label151.Hide();
 
             //AIS2 page 1
             label152.Hide();
@@ -182,8 +160,26 @@ namespace AIS_SIMULATION
             label171.Hide();
             label172.Hide();
 
-
-            
+            //AIS1 page2
+            label125.Hide();
+            label134.Hide();
+            label135.Hide();
+            label136.Hide();
+            label137.Hide();
+            label138.Hide();
+            label139.Hide();
+            label140.Hide();
+            label141.Hide();
+            label142.Hide();
+            label143.Hide();
+            label144.Hide();
+            label145.Hide();
+            label146.Hide();
+            label147.Hide();
+            label148.Hide();
+            label149.Hide();
+            label150.Hide();
+            label151.Hide();            
         }
         
         //function for pressing the start button on the simulation
@@ -191,11 +187,12 @@ namespace AIS_SIMULATION
         {
             startButton.Enabled = false;
             button2.Enabled = true;
+            //lat and long become readonly on left
             Lat1Box.ReadOnly = true;
             Long1Box.ReadOnly = true;
             Course1Box.ReadOnly = true;
             SpeedBox1.ReadOnly = true;
-
+            //lat and long become read only on right
             textBox5.ReadOnly = true;
             textBox6.ReadOnly = true;
             CourseBox2.ReadOnly = true;
@@ -218,20 +215,35 @@ namespace AIS_SIMULATION
             SimulationStartDelay.Start(); //starts the movement of the vessels
             //==============Initialization of the two vessels==================
             Cutter1.Name = "Bertholf";
-            Cutter1.Pseudonym = "dang3r";
+            Cutter1.Pseudonym = "conta1a";
             Cutter1.MMSI = 234;
             Cutter1.vesselCategory = "CG";
-            
+            Cutter1.IMO = 9638527;
+            Cutter1.CSgn = "WMSL750";
+            Cutter1.Dest = "New London";
+            Cutter1.ETA = "unk";
+
             Cutter1.Latitude = Convert.ToDouble(Lat1Box.Text); 
             Cutter1.Longitude = Convert.ToDouble(Long1Box.Text);
             Cutter1.Speed = Convert.ToDouble(SpeedBox1.Text);
             Cutter1.Course = Convert.ToInt16(Course1Box.Text);
 
-           
+            Cutter1.length = 420;
+            Cutter1.tonnage = 4500;
+            Cutter1.cargoType = "unk";
             
+
             Cutter2.Name = "Yeaton";
-            Cutter2.Pseudonym = "iee160"; // should be displayed on AIS box 1
+            Cutter2.Pseudonym = "conta2a"; // should be displayed on AIS box 1
             Cutter2.MMSI = 456;
+            Cutter2.IMO = 1472583;
+            Cutter2.CSgn = "WCV2342";
+            Cutter2.Dest = "New York";
+            Cutter2.ETA = "unk";
+
+            Cutter2.length = 1300;
+            Cutter2.tonnage = 15000;
+            Cutter2.cargoType = "bk";
 
             
             Cutter2.Latitude = Convert.ToDouble(textBox5.Text);
@@ -252,19 +264,22 @@ namespace AIS_SIMULATION
             Distance.Text = distance.ToString() + " miles";//display the dist on the GUI
 
             //if distance is less than 5 miles than send beacons
-            if (distance < 5)
-            {
+            //if (distance < 5)
+            //{
                 StartSim(sender, e);
                 //StartRAn(); // start animation for second vessel beacon sending
                 
-            }//end if 
+            //}//end if 
         }//end start_button
 
         //function to increment the top progress bar all the way
         public void StartSim(object sender, EventArgs e)
         {
             //Send first packet
-            textBox1.AppendText("sending beacon...\r\n");
+            if (beaconCheckBox.Checked == true)
+            {
+                textBox1.AppendText("sending beacon...\r\n");
+            }
             PacketTimer.Start();
             //Initialize Timer to send Subsequent Packets
             Sendtimer.Start();
@@ -282,17 +297,21 @@ namespace AIS_SIMULATION
         {
             if (navAckSending2 == false && fvAckSending2 == false)
             {
-                textBox1.AppendText("sending beacon...\r\n");
+                if (beaconCheckBox.Checked == true)
+                {
+                    textBox1.AppendText("sending beacon...\r\n");
+                }
             }
-            else if (navAckSending2 == true)
+            else if (navAckSending2 == true && fvAckSending2 == false)
             {
                 textBox1.AppendText("sending nav information...\r\n");
                 navAckSending2 = false;
+                
             }
-            else if (fvAckSending2 == true)
+            else if (fvAckSending2 == true && navAckSending2 == false)
             {
                 textBox1.AppendText("sending full vessel information...\r\n");
-                //fvAckSending2 = false;
+                fvAckSending2 = false;
             }
             PacketTimer.Start();
         }
@@ -382,15 +401,25 @@ namespace AIS_SIMULATION
         public void packRec(bool _navSending)
         {
             _navSending = navSending;
-            if (_navSending == false)
+            if (_navSending == false && fvSending == false)
             {
+                if (beaconCheckBox.Checked == true)
                 textBox2.AppendText("beacon rcvd\r\n");
             }
-            else if (_navSending == true)
+            else if (_navSending == true && fvAckSending == false)
             {
                 textBox2.AppendText("nav info request rcvd\r\n");
                 navSending = false;
             }
+            else if (_navSending == false && fvSending == true)
+            {
+                textBox2.AppendText("full vessel info request rvd\r\nverifying authenticity of certificate");
+                
+                fvSending = false;//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                WaitAnimation2.Start();
+            }
+
+
             if (knownName2 == false)
             {
                 nameLabel2.Text = Cutter1.Pseudonym;
@@ -442,6 +471,7 @@ namespace AIS_SIMULATION
         {
             if (navSending2 == false && fvSending2 == false)
             {
+                if (beaconCheckBox.Checked == true)
                 textBox1.AppendText("beacon rcvd\r\n");
             }
             else if (navSending2 == true)
@@ -452,7 +482,7 @@ namespace AIS_SIMULATION
             else if (fvSending2 == true)
             {
                 fvSending2 = false;
-                textBox1.AppendText("full vessel info request rvd\r\nverifying authenticity of certificate...\r\n");
+                textBox1.AppendText("full vessel info request rvd\r\nverifying authenticity of certificate");
                 
                 
                  WaitAnimation.Start();
@@ -557,21 +587,23 @@ namespace AIS_SIMULATION
         public void progressBarAnimation2()
         {
             this.PB2timer.Start();
-            if (navAckSending == false)
+            if (navAckSending == false && fvSending2 == false)
             {
+                if (beaconCheckBox.Checked == true)
                 textBox2.AppendText("sending beacon...\r\n");
             }
-            else if (navAckSending == true)
+            else if (navAckSending == true && fvSending2 == false)
             {
                 textBox2.AppendText("sending nav information...\r\n");
                 navAckSending = false;
             }
 
-            if (fvSending2 == true)
+            if (fvSending2 == true && navAckSending == false)
             {
+            
 
              
-
+               
 
 
 
@@ -883,7 +915,7 @@ namespace AIS_SIMULATION
                 FNCStatus2.Hide();
                 textBox2.AppendText("sending full vessel info query...\r\n");
                 progressBarAnimation2();
-                oneSecDelay2.Start();
+                //oneSecDelay2.Start();
             }
         }
 
@@ -1102,10 +1134,42 @@ namespace AIS_SIMULATION
 
         private void WaitAnimation_Tick(object sender, EventArgs e)
         {
+            for (int i = 0; i < 10; i++)
+            {
+                textBox1.AppendText(".");
+                Thread.Sleep(100);
+            }
+            textBox1.AppendText("\u221A\r\n");
             WaitAnimation.Stop();
             textBox1.AppendText("****authentic US Coast Guard signature****\r\nSending full vessel info to requesting authority\r\n");
             pBanimation1Send();
             fvAckSending2 = true;
+
+        
+           
+
+
+            //data field
+            label163.Text = Cutter1.MMSI.ToString();
+            label165.Text = Cutter1.Name;
+            label116.Text = Cutter1.Name;
+            label126.Text = Cutter1.length.ToString();
+            label130.Text = Cutter1.tonnage.ToString();
+            label127.Text = Cutter1.vesselCategory;
+            label129.Text = Cutter1.cargoType;
+            label128.Text = Cutter1.operatingMission;
+            label131.Text = Cutter1.IMO.ToString();
+            label132.Text = Cutter1.Dest;
+            label133.Text = Cutter1.ETA;
+
+
+
+
+
+
+
+
+            
             
         }
 
@@ -1204,6 +1268,7 @@ namespace AIS_SIMULATION
                 label97.Hide();
 
                 //AIS1 page 2
+                label125.Show();
                 label134.Show();
                 label135.Show();
                 label136.Show();
@@ -1255,6 +1320,7 @@ namespace AIS_SIMULATION
                 label97.Show();
 
                 //AIS1 page 2
+                label125.Hide();
                 label134.Hide();
                 label135.Hide();
                 label136.Hide();
@@ -1454,7 +1520,49 @@ namespace AIS_SIMULATION
 
         private void button4_Click(object sender, EventArgs e)
         {
+            if (FNC_pressed == true)
+            {
+                fvSending = true;
+                FNCstatus.Hide();
+                textBox1.AppendText("sending full vessel info query...\r\n");
+                pBanimation1Send();
+                //oneSecDelay.Start();
+            }
 
+        }
+
+        private void beaconCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WaitAnimation2_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                textBox2.AppendText(".");
+                Thread.Sleep(100);
+            }
+            textBox2.AppendText("\u221A\r\n");
+            WaitAnimation2.Stop();
+            textBox2.AppendText("****authentic US Coast Guard signature****\r\nSending full vessel info to requesting authority\r\n");
+            progressBarAnimation2();
+            fvAckSending = true;
+
+            //data field
+           
+
+            label91.Text = Cutter2.MMSI.ToString();
+            label90.Text = Cutter2.Name;
+            label149.Text = Cutter2.Name;
+            label141.Text = Cutter2.length.ToString();
+            label136.Text = Cutter2.tonnage.ToString();
+            label125.Text = Cutter2.vesselCategory;
+            label139.Text = Cutter2.cargoType;
+            label134.Text = Cutter2.operatingMission;
+            label140.Text = Cutter2.IMO.ToString();
+            label137.Text = Cutter2.Dest;
+            label135.Text = Cutter2.ETA;
         }
 
 

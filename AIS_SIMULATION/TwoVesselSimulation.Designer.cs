@@ -94,6 +94,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.transmissionStatus1 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
             this.label104 = new System.Windows.Forms.Label();
             this.label103 = new System.Windows.Forms.Label();
@@ -126,24 +127,14 @@
             this.cseLbl1 = new System.Windows.Forms.Label();
             this.speedLbl1 = new System.Windows.Forms.Label();
             this.transDis1 = new System.Windows.Forms.Label();
-            this.transmissionStatus1 = new System.Windows.Forms.Label();
             this.time1b = new System.Windows.Forms.Label();
             this.date1 = new System.Windows.Forms.Label();
             this.time1a = new System.Windows.Forms.Label();
             this.targets1 = new System.Windows.Forms.Label();
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cseLbl2 = new System.Windows.Forms.Label();
-            this.speedLbl2 = new System.Windows.Forms.Label();
-            this.transDis2 = new System.Windows.Forms.Label();
             this.transmissionStatus2 = new System.Windows.Forms.Label();
-            this.time2b = new System.Windows.Forms.Label();
-            this.time2a = new System.Windows.Forms.Label();
-            this.date2 = new System.Windows.Forms.Label();
-            this.targets2 = new System.Windows.Forms.Label();
-            this.nameLabel2 = new System.Windows.Forms.Label();
             this.button45 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.button46 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
@@ -178,6 +169,15 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.cseLbl2 = new System.Windows.Forms.Label();
+            this.speedLbl2 = new System.Windows.Forms.Label();
+            this.transDis2 = new System.Windows.Forms.Label();
+            this.time2b = new System.Windows.Forms.Label();
+            this.time2a = new System.Windows.Forms.Label();
+            this.date2 = new System.Windows.Forms.Label();
+            this.targets2 = new System.Windows.Forms.Label();
+            this.nameLabel2 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.FNCstatus = new System.Windows.Forms.Label();
             this.oneSecDelay = new System.Windows.Forms.Timer(this.components);
@@ -353,6 +353,8 @@
             this.label170 = new System.Windows.Forms.Label();
             this.label171 = new System.Windows.Forms.Label();
             this.label172 = new System.Windows.Forms.Label();
+            this.beaconCheckBox = new System.Windows.Forms.CheckBox();
+            this.WaitAnimation2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -984,6 +986,16 @@
             this.panel1.Size = new System.Drawing.Size(417, 187);
             this.panel1.TabIndex = 107;
             // 
+            // transmissionStatus1
+            // 
+            this.transmissionStatus1.AutoSize = true;
+            this.transmissionStatus1.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transmissionStatus1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transmissionStatus1.Location = new System.Drawing.Point(177, 21);
+            this.transmissionStatus1.Name = "transmissionStatus1";
+            this.transmissionStatus1.Size = new System.Drawing.Size(0, 16);
+            this.transmissionStatus1.TabIndex = 114;
+            // 
             // label105
             // 
             this.label105.AutoSize = true;
@@ -1338,16 +1350,6 @@
             this.transDis1.Text = "Tx Disabled";
             this.transDis1.Click += new System.EventHandler(this.transDis1_Click);
             // 
-            // transmissionStatus1
-            // 
-            this.transmissionStatus1.AutoSize = true;
-            this.transmissionStatus1.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transmissionStatus1.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transmissionStatus1.Location = new System.Drawing.Point(177, 21);
-            this.transmissionStatus1.Name = "transmissionStatus1";
-            this.transmissionStatus1.Size = new System.Drawing.Size(0, 16);
-            this.transmissionStatus1.TabIndex = 114;
-            // 
             // time1b
             // 
             this.time1b.AutoSize = true;
@@ -1448,39 +1450,6 @@
             this.panel2.Size = new System.Drawing.Size(417, 187);
             this.panel2.TabIndex = 108;
             // 
-            // cseLbl2
-            // 
-            this.cseLbl2.AutoSize = true;
-            this.cseLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.cseLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cseLbl2.Location = new System.Drawing.Point(592, 701);
-            this.cseLbl2.Name = "cseLbl2";
-            this.cseLbl2.Size = new System.Drawing.Size(36, 16);
-            this.cseLbl2.TabIndex = 118;
-            this.cseLbl2.Text = "---°";
-            // 
-            // speedLbl2
-            // 
-            this.speedLbl2.AutoSize = true;
-            this.speedLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.speedLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speedLbl2.Location = new System.Drawing.Point(496, 698);
-            this.speedLbl2.Name = "speedLbl2";
-            this.speedLbl2.Size = new System.Drawing.Size(50, 16);
-            this.speedLbl2.TabIndex = 117;
-            this.speedLbl2.Text = "---.--";
-            // 
-            // transDis2
-            // 
-            this.transDis2.AutoSize = true;
-            this.transDis2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.transDis2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transDis2.Location = new System.Drawing.Point(543, 681);
-            this.transDis2.Name = "transDis2";
-            this.transDis2.Size = new System.Drawing.Size(85, 16);
-            this.transDis2.TabIndex = 116;
-            this.transDis2.Text = "Tx Disabled";
-            // 
             // transmissionStatus2
             // 
             this.transmissionStatus2.AutoSize = true;
@@ -1491,61 +1460,6 @@
             this.transmissionStatus2.Size = new System.Drawing.Size(0, 16);
             this.transmissionStatus2.TabIndex = 115;
             // 
-            // time2b
-            // 
-            this.time2b.AutoSize = true;
-            this.time2b.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time2b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time2b.Location = new System.Drawing.Point(583, 778);
-            this.time2b.Name = "time2b";
-            this.time2b.Size = new System.Drawing.Size(36, 16);
-            this.time2b.TabIndex = 114;
-            this.time2b.Text = "Time";
-            // 
-            // time2a
-            // 
-            this.time2a.AutoSize = true;
-            this.time2a.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.time2a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time2a.Location = new System.Drawing.Point(583, 762);
-            this.time2a.Name = "time2a";
-            this.time2a.Size = new System.Drawing.Size(36, 16);
-            this.time2a.TabIndex = 114;
-            this.time2a.Text = "Time";
-            // 
-            // date2
-            // 
-            this.date2.AutoSize = true;
-            this.date2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.date2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.date2.Location = new System.Drawing.Point(422, 778);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(36, 16);
-            this.date2.TabIndex = 113;
-            this.date2.Text = "Date";
-            // 
-            // targets2
-            // 
-            this.targets2.AutoSize = true;
-            this.targets2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.targets2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.targets2.Location = new System.Drawing.Point(422, 762);
-            this.targets2.Name = "targets2";
-            this.targets2.Size = new System.Drawing.Size(57, 16);
-            this.targets2.TabIndex = 111;
-            this.targets2.Text = "Targets";
-            // 
-            // nameLabel2
-            // 
-            this.nameLabel2.AutoSize = true;
-            this.nameLabel2.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.nameLabel2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nameLabel2.Location = new System.Drawing.Point(422, 698);
-            this.nameLabel2.Name = "nameLabel2";
-            this.nameLabel2.Size = new System.Drawing.Size(57, 16);
-            this.nameLabel2.TabIndex = 110;
-            this.nameLabel2.Text = "Unknown";
-            // 
             // button45
             // 
             this.button45.Location = new System.Drawing.Point(106, 155);
@@ -1555,17 +1469,6 @@
             this.button45.Text = "<<";
             this.button45.UseVisualStyleBackColor = true;
             this.button45.Click += new System.EventHandler(this.button45_Click);
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.textBox7.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(15, 2);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(220, 136);
-            this.textBox7.TabIndex = 35;
-            this.textBox7.Text = "\r\n                   \r\n\r\n\r\n\r\n";
             // 
             // label35
             // 
@@ -1903,6 +1806,105 @@
             this.label48.Size = new System.Drawing.Size(29, 13);
             this.label48.TabIndex = 70;
             this.label48.Text = "ALL";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.textBox7.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(15, 2);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(220, 136);
+            this.textBox7.TabIndex = 35;
+            this.textBox7.Text = "\r\n                   \r\n\r\n\r\n\r\n";
+            // 
+            // cseLbl2
+            // 
+            this.cseLbl2.AutoSize = true;
+            this.cseLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cseLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cseLbl2.Location = new System.Drawing.Point(592, 701);
+            this.cseLbl2.Name = "cseLbl2";
+            this.cseLbl2.Size = new System.Drawing.Size(36, 16);
+            this.cseLbl2.TabIndex = 118;
+            this.cseLbl2.Text = "---°";
+            // 
+            // speedLbl2
+            // 
+            this.speedLbl2.AutoSize = true;
+            this.speedLbl2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.speedLbl2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedLbl2.Location = new System.Drawing.Point(496, 698);
+            this.speedLbl2.Name = "speedLbl2";
+            this.speedLbl2.Size = new System.Drawing.Size(50, 16);
+            this.speedLbl2.TabIndex = 117;
+            this.speedLbl2.Text = "---.--";
+            // 
+            // transDis2
+            // 
+            this.transDis2.AutoSize = true;
+            this.transDis2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.transDis2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transDis2.Location = new System.Drawing.Point(543, 681);
+            this.transDis2.Name = "transDis2";
+            this.transDis2.Size = new System.Drawing.Size(85, 16);
+            this.transDis2.TabIndex = 116;
+            this.transDis2.Text = "Tx Disabled";
+            // 
+            // time2b
+            // 
+            this.time2b.AutoSize = true;
+            this.time2b.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time2b.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time2b.Location = new System.Drawing.Point(583, 778);
+            this.time2b.Name = "time2b";
+            this.time2b.Size = new System.Drawing.Size(36, 16);
+            this.time2b.TabIndex = 114;
+            this.time2b.Text = "Time";
+            // 
+            // time2a
+            // 
+            this.time2a.AutoSize = true;
+            this.time2a.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.time2a.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time2a.Location = new System.Drawing.Point(583, 762);
+            this.time2a.Name = "time2a";
+            this.time2a.Size = new System.Drawing.Size(36, 16);
+            this.time2a.TabIndex = 114;
+            this.time2a.Text = "Time";
+            // 
+            // date2
+            // 
+            this.date2.AutoSize = true;
+            this.date2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.date2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date2.Location = new System.Drawing.Point(422, 778);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(36, 16);
+            this.date2.TabIndex = 113;
+            this.date2.Text = "Date";
+            // 
+            // targets2
+            // 
+            this.targets2.AutoSize = true;
+            this.targets2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.targets2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targets2.Location = new System.Drawing.Point(422, 762);
+            this.targets2.Name = "targets2";
+            this.targets2.Size = new System.Drawing.Size(57, 16);
+            this.targets2.TabIndex = 111;
+            this.targets2.Text = "Targets";
+            // 
+            // nameLabel2
+            // 
+            this.nameLabel2.AutoSize = true;
+            this.nameLabel2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.nameLabel2.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel2.Location = new System.Drawing.Point(422, 698);
+            this.nameLabel2.Name = "nameLabel2";
+            this.nameLabel2.Size = new System.Drawing.Size(57, 16);
+            this.nameLabel2.TabIndex = 110;
+            this.nameLabel2.Text = "Unknown";
             // 
             // timer2
             // 
@@ -3659,12 +3661,31 @@
             this.label172.TabIndex = 217;
             this.label172.Text = "Vessel   Info  Pg  1  <  >";
             // 
+            // beaconCheckBox
+            // 
+            this.beaconCheckBox.AutoSize = true;
+            this.beaconCheckBox.Checked = true;
+            this.beaconCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.beaconCheckBox.Location = new System.Drawing.Point(369, 130);
+            this.beaconCheckBox.Name = "beaconCheckBox";
+            this.beaconCheckBox.Size = new System.Drawing.Size(145, 17);
+            this.beaconCheckBox.TabIndex = 238;
+            this.beaconCheckBox.Text = "Send Navigation Beacon";
+            this.beaconCheckBox.UseVisualStyleBackColor = true;
+            this.beaconCheckBox.CheckedChanged += new System.EventHandler(this.beaconCheckBox_CheckedChanged);
+            // 
+            // WaitAnimation2
+            // 
+            this.WaitAnimation2.Interval = 2000;
+            this.WaitAnimation2.Tick += new System.EventHandler(this.WaitAnimation2_Tick);
+            // 
             // TwoVesselSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1480, 1006);
+            this.Controls.Add(this.beaconCheckBox);
             this.Controls.Add(this.label152);
             this.Controls.Add(this.label153);
             this.Controls.Add(this.label154);
@@ -4187,6 +4208,8 @@
         private System.Windows.Forms.Label label170;
         private System.Windows.Forms.Label label171;
         private System.Windows.Forms.Label label172;
+        private System.Windows.Forms.CheckBox beaconCheckBox;
+        private System.Windows.Forms.Timer WaitAnimation2;
     }
 }
 
