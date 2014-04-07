@@ -32,6 +32,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading; //used for pauses
 using System.Timers;  //used for the multiple timers in the simulation
+using System.Data.OleDb; //used for database
 
 namespace AIS_SIMULATION
 {
@@ -43,6 +44,19 @@ namespace AIS_SIMULATION
         //when a request for nav info is made, then the requesting vessel will 
         //either receive the name of the other vessel or it will be denied.
 
+        //========database===============
+        public string connString;
+        public string query;
+        OleDbConnection connection;
+        OleDbCommand command;
+        OleDbDataReader reader;
+        //public OleDbDataAdapter dAdapter;
+        //public DataTable dTable;
+        //public DataSet dsBT;
+        //public OleDbCommandBuilder cBuilder;
+        //public BindingSource bndSrc;
+        //public DataView myDataView;
+        //================================
         Stopwatch stopwatch = new Stopwatch(); //stopwatch for GUI, seen on GUI at startup, keeps running time
         Actor actor = new Actor(); //new instance of class Actor, see Actor.cs
         CGCutter Cutter1 = new CGCutter();  //new instance of CGCutter
@@ -81,13 +95,40 @@ namespace AIS_SIMULATION
         public TwoVesselSimulation()
         {
             InitializeComponent(); 
+            //==========database=================
+            connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\PseudonymsDB1.accdb";
+            query = "SELECT Pseudonym FROM PseudonymTable";
+
+            connection = new OleDbConnection(connString);
+            connection.Open();
+
+            command = new OleDbCommand(query, connection);
+
+            reader = command.ExecuteReader();
+            reader.Read();
+
+            //dsBT = new DataSet();
+            //dAdapter = new OleDbDataAdapter(query, connString);
+            ////dTable = new DataTable();
+            //cBuilder = new OleDbCommandBuilder(dAdapter);
+            //cBuilder.QuotePrefix = "[";
+            //cBuilder.QuoteSuffix = "]";
+            //dAdapter.Fill(dsBT, "PseudonymTable");
+
+            //
+            //bndSrc = new BindingSource();
+            //bndSrc.DataSource = dsBT.Tables["PseudonymTable"];
+            //this.testlabel.DataBindings.Add(new Binding("Text", bndSrc, "Pseudonym", true));
+            //bndSrc.AddNew();
+            
+            //===================================
             timer2.Enabled = true;  //timer for both AIS clocks  
             //code for fixing size of GUI
             this.Width = 890;
             this.MaximizeBox = false; //disabled default maximize button
             this.MinimizeBox = false; //disabled default minimize button
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
+            testlabel.Show();
             //AIS1 page1
             label77.Hide();
             label78.Hide();
@@ -179,12 +220,19 @@ namespace AIS_SIMULATION
             label148.Hide();
             label149.Hide();
             label150.Hide();
-            label151.Hide();            
+            label151.Hide();
+
+
+            testlabel.Hide();
         }
         
         //function for pressing the start button on the simulation
         public void startButton_Click(object sender, EventArgs e)
         {
+            PseudonymTimer.Start();
+            fileToolStripMenuItem.Enabled = false;
+            aboutToolStripMenuItem.Enabled = false;
+            helpToolStripMenuItem.Enabled = false;
             startButton.Enabled = false;
             button2.Enabled = true;
             //lat and long become readonly on left
@@ -214,8 +262,16 @@ namespace AIS_SIMULATION
             timer2.Start(); //timer to start clock again when start button is pressed
             SimulationStartDelay.Start(); //starts the movement of the vessels
             //==============Initialization of the two vessels==================
+
+            //OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\AIS Student\Documents\Visual Studio 2010\Projects\AIS_SIMULATION\AIS_SIMULATION\bin\Debug\PseudonymsDB1.aacdb;Persist Security Info=False");
+            //co.Open();
+            //OleDbCommand cmd = new OleDbCommand("SELECT * FROM PseudonymTable WHERE ID = @num", co);
+            //cmd.Parameters.AddWithValue("@num", Cutter1.Pseudonym);
+
             Cutter1.Name = "Bertholf";
-            Cutter1.Pseudonym = "conta1a";
+            //Cutter1.Pseudonym = "conta1a";
+            Cutter1.Pseudonym = reader[0].ToString();
+
             Cutter1.MMSI = 234;
             Cutter1.vesselCategory = "CG";
             Cutter1.IMO = 9638527;
@@ -234,7 +290,10 @@ namespace AIS_SIMULATION
             
 
             Cutter2.Name = "Yeaton";
-            Cutter2.Pseudonym = "conta2a"; // should be displayed on AIS box 1
+            //Cutter2.Pseudonym = "conta2a"; // should be displayed on AIS box 1
+            reader.Read();
+            Cutter2.Pseudonym = reader[0].ToString();
+            reader.Read();
             Cutter2.MMSI = 456;
             Cutter2.IMO = 1472583;
             Cutter2.CSgn = "WCV2342";
@@ -357,6 +416,10 @@ namespace AIS_SIMULATION
         //stop button functionality
         public void button2_Click(object sender, EventArgs e)
         {
+            PseudonymTimer.Stop();
+            fileToolStripMenuItem.Enabled = true;
+            aboutToolStripMenuItem.Enabled = true;
+            helpToolStripMenuItem.Enabled = true;
             button2.Enabled = false;
             startButton.Enabled = true;
             button44.Enabled = true;
@@ -1129,6 +1192,14 @@ namespace AIS_SIMULATION
         private void button44_Click(object sender, EventArgs e)
         {
             button44.Enabled = false;
+            button2.Enabled = false;
+            //InitializeComponent();
+            //enter reset button code
+            this.Hide();
+            TwoVesselSimulation newForm = new TwoVesselSimulation();
+            newForm.Show();
+            
+
             
         }
 
@@ -1563,6 +1634,25 @@ namespace AIS_SIMULATION
             label140.Text = Cutter2.IMO.ToString();
             label137.Text = Cutter2.Dest;
             label135.Text = Cutter2.ETA;
+        }
+
+        private void PseudonymTimer_Tick(object sender, EventArgs e)
+        {
+            if (reader.Read())
+            {
+                //reader.Read();
+                Cutter1.Pseudonym = reader[0].ToString();
+                reader.Read();
+                Cutter2.Pseudonym = reader[0].ToString();
+                reader.Read();
+            }
+            else
+            {
+                reader.Close();
+
+
+                reader = command.ExecuteReader();
+            }
         }
 
 

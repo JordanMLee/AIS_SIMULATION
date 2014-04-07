@@ -355,6 +355,10 @@
             this.label172 = new System.Windows.Forms.Label();
             this.beaconCheckBox = new System.Windows.Forms.CheckBox();
             this.WaitAnimation2 = new System.Windows.Forms.Timer(this.components);
+            this.pseudonymsDB1DataSet1 = new AIS_SIMULATION.PseudonymsDB1DataSet();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.testlabel = new System.Windows.Forms.Label();
+            this.PseudonymTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -363,6 +367,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pseudonymsDB1DataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
@@ -3679,12 +3685,32 @@
             this.WaitAnimation2.Interval = 2000;
             this.WaitAnimation2.Tick += new System.EventHandler(this.WaitAnimation2_Tick);
             // 
+            // pseudonymsDB1DataSet1
+            // 
+            this.pseudonymsDB1DataSet1.DataSetName = "PseudonymsDB1DataSet";
+            this.pseudonymsDB1DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testlabel
+            // 
+            this.testlabel.AutoSize = true;
+            this.testlabel.Location = new System.Drawing.Point(301, 278);
+            this.testlabel.Name = "testlabel";
+            this.testlabel.Size = new System.Drawing.Size(46, 13);
+            this.testlabel.TabIndex = 239;
+            this.testlabel.Text = "testlabel";
+            // 
+            // PseudonymTimer
+            // 
+            this.PseudonymTimer.Interval = 15000;
+            this.PseudonymTimer.Tick += new System.EventHandler(this.PseudonymTimer_Tick);
+            // 
             // TwoVesselSimulation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1480, 1006);
+            this.Controls.Add(this.testlabel);
             this.Controls.Add(this.beaconCheckBox);
             this.Controls.Add(this.label152);
             this.Controls.Add(this.label153);
@@ -3878,6 +3904,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pseudonymsDB1DataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4210,6 +4238,10 @@
         private System.Windows.Forms.Label label172;
         private System.Windows.Forms.CheckBox beaconCheckBox;
         private System.Windows.Forms.Timer WaitAnimation2;
+        private PseudonymsDB1DataSet pseudonymsDB1DataSet1;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label testlabel;
+        private System.Windows.Forms.Timer PseudonymTimer;
     }
 }
 
