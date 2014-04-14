@@ -47,15 +47,10 @@ namespace AIS_SIMULATION
         //========database===============
         public string connString;
         public string query;
+        public string query2;
         OleDbConnection connection;
         OleDbCommand command;
         OleDbDataReader reader;
-        //public OleDbDataAdapter dAdapter;
-        //public DataTable dTable;
-        //public DataSet dsBT;
-        //public OleDbCommandBuilder cBuilder;
-        //public BindingSource bndSrc;
-        //public DataView myDataView;
         //================================
         Stopwatch stopwatch = new Stopwatch(); //stopwatch for GUI, seen on GUI at startup, keeps running time
         Actor actor = new Actor(); //new instance of class Actor, see Actor.cs
@@ -90,36 +85,37 @@ namespace AIS_SIMULATION
 
         public bool navBtn1 = false; //flag to check if NAV button has been pressed on AIS1
         public bool navBtn2 = false; //flag to check if NAV button has been pressed on AIS2
+        public bool nefariousAct = false; //flag for nefarious vessel operations
+        public bool isChecked = false;
+        public bool failToSendNav = false;
+        public bool forceNav = false;//flag for cg vessel countering Denial of Nav info
+        public bool forceFVI = false;
 
+        public bool broadcastUnsigedInfo = false;
+        public bool spoofCGCertificate = false;
+
+        public bool alterAISInfo = false;
         //Constructor
         public TwoVesselSimulation()
         {
             InitializeComponent(); 
             //==========database=================
             connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\PseudonymsDB1.accdb";
-            query = "SELECT Pseudonym FROM PseudonymTable";
+            query = "SELECT * FROM PseudonymTable";
+            
 
             connection = new OleDbConnection(connString);
             connection.Open();
 
             command = new OleDbCommand(query, connection);
+          
 
             reader = command.ExecuteReader();
+           
             reader.Read();
+          
 
-            //dsBT = new DataSet();
-            //dAdapter = new OleDbDataAdapter(query, connString);
-            ////dTable = new DataTable();
-            //cBuilder = new OleDbCommandBuilder(dAdapter);
-            //cBuilder.QuotePrefix = "[";
-            //cBuilder.QuoteSuffix = "]";
-            //dAdapter.Fill(dsBT, "PseudonymTable");
-
-            //
-            //bndSrc = new BindingSource();
-            //bndSrc.DataSource = dsBT.Tables["PseudonymTable"];
-            //this.testlabel.DataBindings.Add(new Binding("Text", bndSrc, "Pseudonym", true));
-            //bndSrc.AddNew();
+           
             
             //===================================
             timer2.Enabled = true;  //timer for both AIS clocks  
@@ -156,6 +152,7 @@ namespace AIS_SIMULATION
             button3.Enabled = false; //3-vessel button
             button2.Enabled = false; //stop button
             button44.Enabled = false; //reset button
+            panel4.Enabled = false;
             
             //AIS2 page2
             label114.Hide();
@@ -229,6 +226,7 @@ namespace AIS_SIMULATION
         //function for pressing the start button on the simulation
         public void startButton_Click(object sender, EventArgs e)
         {
+            //panel4.Enabled = true;
             PseudonymTimer.Start();
             fileToolStripMenuItem.Enabled = false;
             aboutToolStripMenuItem.Enabled = false;
@@ -263,14 +261,10 @@ namespace AIS_SIMULATION
             SimulationStartDelay.Start(); //starts the movement of the vessels
             //==============Initialization of the two vessels==================
 
-            //OleDbConnection co = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\AIS Student\Documents\Visual Studio 2010\Projects\AIS_SIMULATION\AIS_SIMULATION\bin\Debug\PseudonymsDB1.aacdb;Persist Security Info=False");
-            //co.Open();
-            //OleDbCommand cmd = new OleDbCommand("SELECT * FROM PseudonymTable WHERE ID = @num", co);
-            //cmd.Parameters.AddWithValue("@num", Cutter1.Pseudonym);
-
+            
             Cutter1.Name = "Bertholf";
             //Cutter1.Pseudonym = "conta1a";
-            Cutter1.Pseudonym = reader[0].ToString();
+            Cutter1.Pseudonym = reader[1].ToString();
 
             Cutter1.MMSI = 234;
             Cutter1.vesselCategory = "CG";
@@ -291,9 +285,9 @@ namespace AIS_SIMULATION
 
             Cutter2.Name = "Yeaton";
             //Cutter2.Pseudonym = "conta2a"; // should be displayed on AIS box 1
-            reader.Read();
-            Cutter2.Pseudonym = reader[0].ToString();
-            reader.Read();
+            
+            Cutter2.Pseudonym = reader[2].ToString();
+     
             Cutter2.MMSI = 456;
             Cutter2.IMO = 1472583;
             Cutter2.CSgn = "WCV2342";
@@ -416,6 +410,8 @@ namespace AIS_SIMULATION
         //stop button functionality
         public void button2_Click(object sender, EventArgs e)
         {
+            radioButton4.Checked = false;
+            panel4.Enabled = false;
             PseudonymTimer.Stop();
             fileToolStripMenuItem.Enabled = true;
             aboutToolStripMenuItem.Enabled = true;
@@ -534,8 +530,18 @@ namespace AIS_SIMULATION
         {
             if (navSending2 == false && fvSending2 == false)
             {
-                if (beaconCheckBox.Checked == true)
-                textBox1.AppendText("beacon rcvd\r\n");
+                if (broadcastUnsigedInfo == false)
+                {
+                    if (beaconCheckBox.Checked == true)
+                    {
+                        textBox1.AppendText("beacon rcvd\r\n");
+                    }
+                }
+                else if (broadcastUnsigedInfo == true)
+                {
+                    textBox1.AppendText("WARNING! unsigned beacon rcvd");
+                    
+                }
             }
             else if (navSending2 == true)
             {
@@ -787,6 +793,12 @@ namespace AIS_SIMULATION
 
 
         }
+
+        public void navNACK()
+        {
+            textBox2.AppendText("Prevented nav info transmission\r\n");
+            textBox1.AppendText("request for nav info DENIED\r\n");
+        }
         public void navACK2()
         {
             textBox1.AppendText("ACK of nav info sent\r\n");
@@ -819,12 +831,34 @@ namespace AIS_SIMULATION
         {
             if ( button1_click== true)
             {
-                navACK();
-                //nameLabel1.Text = Cutter2.Name;
-                knownName1 = true;
-                navAckSending = true;
-                progressBarAnimation2();
-                Delaytimerfornav1.Start();
+                if (failToSendNav == false)
+                {
+                    navACK();
+                    
+                    knownName1 = true;
+                    navAckSending = true;
+                    progressBarAnimation2();
+                    Delaytimerfornav1.Start();
+                }
+                else if (failToSendNav == true)
+                {
+                    //failToSendNav = false;
+                    navNACK();
+                    
+                    knownName1 = false;
+                    navAckSending = false;
+                    progressBarAnimation2();
+                    //Delaytimerfornav1.Start();
+                    if (Cutter1.vesselCategory == "CG")
+                    {
+
+                        textBox1.AppendText("Target DENIED Nav request\r\n");
+                        textBox1.AppendText("Press \"9\" to retrieve Nav Info\r\n");
+                        forceNav = true;
+                    }
+
+
+                }
 
             }
         }
@@ -1073,6 +1107,7 @@ namespace AIS_SIMULATION
             label2.Text = "CIVILIAN VESSEL";
             Cutter2.vesselCategory = "CV";
             panel4.Enabled = false;
+            nefariousAct = false;
         }
 
         private void nefariousVesselToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1081,6 +1116,8 @@ namespace AIS_SIMULATION
             label2.Text = "NEFARIOUS VESSEL";
             Cutter2.vesselCategory = "CV";
             panel4.Enabled = true;
+            nefariousAct = true;
+            
         }
 
         private void shoreSideUnitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1088,6 +1125,7 @@ namespace AIS_SIMULATION
             pictureBox2.Image = AIS_SIMULATION.Properties.Resources._300px_BostonCoastGuard;
             label2.Text = "SHORE SIDE UNIT";
             panel4.Enabled = false;
+            nefariousAct = false;
         }
 
         private void label78_Click(object sender, EventArgs e)
@@ -1169,7 +1207,7 @@ namespace AIS_SIMULATION
             pictureBox2.Image = AIS_SIMULATION.Properties.Resources.pleasureCraft;
             label2.Text = "PLEASURE CRAFT";
             panel4.Enabled = false ;
-
+            nefariousAct = false;
         }
 
         private void pleasureCraftToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1210,16 +1248,14 @@ namespace AIS_SIMULATION
                 textBox1.AppendText(".");
                 Thread.Sleep(100);
             }
-            textBox1.AppendText("\u221A\r\n");
-            WaitAnimation.Stop();
-            textBox1.AppendText("****authentic US Coast Guard signature****\r\nSending full vessel info to requesting authority\r\n");
-            pBanimation1Send();
-            fvAckSending2 = true;
 
-        
-           
-
-
+            if (spoofCGCertificate == false)
+            {
+                textBox1.AppendText("\u221A\r\n");
+                WaitAnimation.Stop();
+                textBox1.AppendText("****authentic US Coast Guard signature****\r\nSending full vessel info to requesting authority\r\n");
+                pBanimation1Send();
+                fvAckSending2 = true;
             //data field
             label163.Text = Cutter1.MMSI.ToString();
             label165.Text = Cutter1.Name;
@@ -1238,10 +1274,20 @@ namespace AIS_SIMULATION
 
 
 
+            }
+            else if (spoofCGCertificate == true)
+            {
+                textBox1.AppendText("X\r\n");
+                WaitAnimation.Stop();
+                textBox1.AppendText("                     ****WARNING****\r\n****unauthentic US Coast Guard signature****\r\n");
+                textBox1.AppendText("Prevented FVI transmission\r\n");
+                fvAckSending2 = false;
+
+               
+            }
 
 
-            
-            
+     
         }
 
         private void label121_Click(object sender, EventArgs e)
@@ -1617,34 +1663,65 @@ namespace AIS_SIMULATION
             textBox2.AppendText("\u221A\r\n");
             WaitAnimation2.Stop();
             textBox2.AppendText("****authentic US Coast Guard signature****\r\nSending full vessel info to requesting authority\r\n");
+          
+          
+
             progressBarAnimation2();
             fvAckSending = true;
 
-            //data field
-           
 
-            label91.Text = Cutter2.MMSI.ToString();
-            label90.Text = Cutter2.Name;
-            label149.Text = Cutter2.Name;
-            label141.Text = Cutter2.length.ToString();
-            label136.Text = Cutter2.tonnage.ToString();
-            label125.Text = Cutter2.vesselCategory;
-            label139.Text = Cutter2.cargoType;
-            label134.Text = Cutter2.operatingMission;
-            label140.Text = Cutter2.IMO.ToString();
-            label137.Text = Cutter2.Dest;
-            label135.Text = Cutter2.ETA;
+            //data field
+
+            if (alterAISInfo == false)
+            {
+                label91.Text = Cutter2.MMSI.ToString();
+                label90.Text = Cutter2.Name;
+                label149.Text = Cutter2.Name;
+                label141.Text = Cutter2.length.ToString();
+                label136.Text = Cutter2.tonnage.ToString();
+                label125.Text = Cutter2.vesselCategory;
+                label139.Text = Cutter2.cargoType;
+                label134.Text = Cutter2.operatingMission;
+                label140.Text = Cutter2.IMO.ToString();
+                label137.Text = Cutter2.Dest;
+                label135.Text = Cutter2.ETA;
+            }
+            else if (alterAISInfo == true)
+            {
+                textBox1.AppendText("Target has transmissed altered AIS data\r\n");
+                alterAISInfo = false;
+                label91.Text = "324125";
+                label90.Text = "sdfdsgsdg";
+                label149.Text = "sdfdsgsdg";
+                label141.Text = "100001";
+                label136.Text = "unk";
+                label125.Text = "unk";
+                label139.Text = "unk";
+                label134.Text = "unk";
+                label140.Text = "unk";
+                label137.Text = "unk";
+                label135.Text = "unk";
+                if (Cutter1.vesselCategory == "CG")
+                {
+                    forceFVI = true;
+                    textBox1.AppendText("Press \"8\" to retrieve FVI\r\n");
+
+                }
+
+
+            }
         }
 
         private void PseudonymTimer_Tick(object sender, EventArgs e)
         {
             if (reader.Read())
             {
-                //reader.Read();
-                Cutter1.Pseudonym = reader[0].ToString();
-                reader.Read();
-                Cutter2.Pseudonym = reader[0].ToString();
-                reader.Read();
+             
+            
+                Cutter1.Pseudonym = reader[1].ToString();
+                Cutter2.Pseudonym = reader[2].ToString();
+                   reader.Read();
+                
             }
             else
             {
@@ -1653,6 +1730,119 @@ namespace AIS_SIMULATION
 
                 reader = command.ExecuteReader();
             }
+
+
+            
+
+        }
+
+        //nefarious vessel code
+        //Fail to Send nav Info
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            //isChecked = radioButton1.Checked;
+            if (nefariousAct == true)
+            {
+                failToSendNav = true;  
+                
+               
+
+
+            }
+            
+
+        }
+
+        //private void radioButton1_Click(object sender, EventArgs e)
+        //{
+        //    if (radioButton1.Checked && !isChecked)
+        //        radioButton1.Checked = false;
+        //    else
+        //    {
+        //        radioButton1.Checked = true;
+        //        isChecked = false;
+        //    }
+        //}
+
+        //alter AIS info
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nefariousAct == true)
+            {
+                alterAISInfo = true;
+            }
+        }
+
+        //broadcast unsigned info
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nefariousAct == true)
+            {
+                broadcastUnsigedInfo = true;
+            }
+        }
+
+        //try to spoof CG certificate
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (nefariousAct == true)
+            {
+                spoofCGCertificate = true;
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            if (forceNav == true)
+            {
+                forceNav = false;
+                textBox1.AppendText("Retrieving Nav Info...\r\n");
+                navSending = true;
+                pBanimation1Send();
+                oneSecDelay.Start();
+                failToSendNav = false;
+                message2_Click(sender, e);
+
+
+            }
+            else if (forceNav == false)
+            {
+                textBox1.AppendText("unknown operation\r\n");
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (forceFVI == true)
+            {
+                textBox1.AppendText("Retrieving FVI by force...\r\n");
+                alterAISInfo = false;
+                WaitAnimation2_Tick(sender, e);
+
+
+            }
+            else if (forceFVI == false)
+            {
+                textBox1.AppendText("unknown operation\r\n");
+            }
+
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            radioButton4.Checked = false;
+            radioButton3.Checked = false;
+            radioButton2.Checked = false;
+            radioButton1.Checked = false;
+            failToSendNav = false;
+            forceNav = false;//flag for cg vessel countering Denial of Nav info
+            forceFVI = false;
+
+            broadcastUnsigedInfo = false;
+            spoofCGCertificate = false;
+
+            alterAISInfo = false;
+
         }
 
 
