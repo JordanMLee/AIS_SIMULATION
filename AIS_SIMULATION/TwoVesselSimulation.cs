@@ -152,7 +152,7 @@ namespace AIS_SIMULATION
             button3.Enabled = false; //3-vessel button
             button2.Enabled = false; //stop button
             button44.Enabled = false; //reset button
-            panel4.Enabled = false;
+            //panel4.Enabled = false;
             
             //AIS2 page2
             label114.Hide();
@@ -264,8 +264,11 @@ namespace AIS_SIMULATION
             
             Cutter1.Name = "Bertholf";
             //Cutter1.Pseudonym = "conta1a";
-            Cutter1.Pseudonym = reader[1].ToString();
-
+            try
+            {
+                Cutter1.Pseudonym = reader[1].ToString();
+            
+            
             Cutter1.MMSI = 234;
             Cutter1.vesselCategory = "CG";
             Cutter1.IMO = 9638527;
@@ -281,12 +284,19 @@ namespace AIS_SIMULATION
             Cutter1.length = 420;
             Cutter1.tonnage = 4500;
             Cutter1.cargoType = "unk";
-            
+            }
+            catch
+            {
+                Debug.WriteLine("Did not read psuedonym.");
+            }
 
             Cutter2.Name = "Yeaton";
             //Cutter2.Pseudonym = "conta2a"; // should be displayed on AIS box 1
-            
-            Cutter2.Pseudonym = reader[2].ToString();
+
+            try
+            {
+                Cutter2.Pseudonym = reader[2].ToString();
+           
      
             Cutter2.MMSI = 456;
             Cutter2.IMO = 1472583;
@@ -304,7 +314,11 @@ namespace AIS_SIMULATION
             Cutter2.Speed = Convert.ToDouble(SpeedBox2.Text);
             Cutter2.Course = Convert.ToInt16(CourseBox2.Text);
             Cutter2.vesselCategory = "CV";
-          
+           }
+            catch
+            {
+                Debug.WriteLine("Did not read psuedonym.");
+            }
             //=================================================================
 
             //number targets displayed on AIS boxes
@@ -411,7 +425,7 @@ namespace AIS_SIMULATION
         public void button2_Click(object sender, EventArgs e)
         {
             radioButton4.Checked = false;
-            panel4.Enabled = false;
+            //panel4.Enabled = false;
             PseudonymTimer.Stop();
             fileToolStripMenuItem.Enabled = true;
             aboutToolStripMenuItem.Enabled = true;
@@ -450,12 +464,9 @@ namespace AIS_SIMULATION
             Long1Box.Text = label70.Text;
             textBox5.Text = label73.Text;
             textBox6.Text = label74.Text;
-            
-
-
-
+      
         }
-        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
         //receive function for Receiving packets for AIS2
         public void packRec(bool _navSending)
         {
@@ -474,7 +485,7 @@ namespace AIS_SIMULATION
             {
                 textBox2.AppendText("full vessel info request rvd\r\nverifying authenticity of certificate");
                 
-                fvSending = false;//&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+                fvSending = false;//
                 WaitAnimation2.Start();
             }
 
@@ -539,7 +550,7 @@ namespace AIS_SIMULATION
                 }
                 else if (broadcastUnsigedInfo == true)
                 {
-                    textBox1.AppendText("WARNING! unsigned beacon rcvd");
+                    textBox1.AppendText("WARNING! unsigned beacon rcvd\r\n");
                     
                 }
             }
@@ -571,21 +582,32 @@ namespace AIS_SIMULATION
             
             cseLbl1.Text = Cutter2.Course.ToString() + "°";
             speedLbl1.Text = " " + Cutter2.Speed.ToString();
-            if (Convert.ToDouble(label73.Text) >= 0)
+            if (alterAISInfo == false)
             {
-                label81.Text = "N " + label73.Text;
+                if (Convert.ToDouble(label73.Text) >= 0)
+                {
+                    label81.Text = "N " + label73.Text;
+                }
+                else if (Convert.ToDouble(label73.Text) < 0)
+                {
+                    label81.Text = "S " + label73.Text;
+                }
+                if (Convert.ToDouble(label74.Text) >= 0)
+                {
+                    label86.Text = "E " + label74.Text;
+                }
+                else if (Convert.ToDouble(label74.Text) < 0)
+                {
+                    label86.Text = "W " + (Convert.ToDouble(label74.Text) * (-1)).ToString();
+                }
             }
-            else if (Convert.ToDouble(label73.Text) < 0)
+            else if (alterAISInfo == true)
             {
-                label81.Text = "S " + label73.Text;
-            }
-            if (Convert.ToDouble(label74.Text) >= 0)
-            {
-                label86.Text = "E " + label74.Text;
-            }
-            else if (Convert.ToDouble(label74.Text) < 0)
-            {
-                label86.Text = "W " + (Convert.ToDouble(label74.Text) * (-1)).ToString();
+
+                label81.Text = "------";
+                label86.Text = "------";
+                textBox1.AppendText("Target transmitted altered AIS data\r\n");
+                textBox1.AppendText("Target's location does not match\r\nwith RADAR data\r\n");
             }
             //label86.Text = "E " + label74.Text;
             label94.Text = Cutter2.Course.ToString() + "°";
@@ -1688,23 +1710,27 @@ namespace AIS_SIMULATION
             }
             else if (alterAISInfo == true)
             {
-                textBox1.AppendText("Target has transmissed altered AIS data\r\n");
+                textBox1.AppendText("Target transmitted altered AIS data\r\n");
+                textBox1.AppendText("Target's location does not match\r\nwith RADAR data\r\n");
+
                 alterAISInfo = false;
-                label91.Text = "324125";
-                label90.Text = "sdfdsgsdg";
-                label149.Text = "sdfdsgsdg";
-                label141.Text = "100001";
-                label136.Text = "unk";
-                label125.Text = "unk";
-                label139.Text = "unk";
-                label134.Text = "unk";
-                label140.Text = "unk";
-                label137.Text = "unk";
-                label135.Text = "unk";
+                //label91.Text = "324125";
+                //label90.Text = "sdfdsgsdg";
+                //label149.Text = "sdfdsgsdg";
+                //label141.Text = "100001";
+                //label136.Text = "unk";
+                //label125.Text = "unk";
+                //label139.Text = "unk";
+                //label134.Text = "unk";
+                //label140.Text = "unk";
+                //label137.Text = "unk";
+                //label135.Text = "unk";
+                label81.Text = "------";
+                label86.Text = "------";
                 if (Cutter1.vesselCategory == "CG")
                 {
                     forceFVI = true;
-                    textBox1.AppendText("Press \"8\" to retrieve FVI\r\n");
+                    //textBox1.AppendText("Press \"8\" to retrieve FVI\r\n");
 
                 }
 
