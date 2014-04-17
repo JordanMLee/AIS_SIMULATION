@@ -1211,7 +1211,7 @@ namespace AIS_SIMULATION
             label151.Hide();
 
 
-            textBox3.Show();
+          
             transmissionStatus1.Show(); //label for showing Class A transmission
             
 
